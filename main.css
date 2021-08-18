@@ -151,7 +151,15 @@
 
   #profphoto{
     float: right;
-    width: 50%;
-    align-content: flex-end;
-
+    width: 40%;
+    align-content: flex-start;
+    border-left: 15 px;
   }
+
+.grid-container {
+    display: inline-grid;
+    grid-column-gap: 50px;
+    grid-template-columns: 80px 200px auto 40px;
+    justify-content: space-evenly;
+}
+

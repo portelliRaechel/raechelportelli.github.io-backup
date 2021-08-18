@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>r.a. portelli</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+      </style>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
+        </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <header>
+      <div class="inner-width">
+        <a href="#" class="logo"><p class="logo-nav">r.a. portelli</p></a>
+        <i class="menu-toggle-btn fas fa-bars"></i>
+        <nav class="navigation-menu">
+          <a href="#"><i class="fas fa-home home"></i> Home</a>
+          <a href="#"><i class="fas fa-align-left about"></i> About</a>
+          <a href="#"><i class="fab fa-buffer research"></i> Research</a>
+          <a href="#"><i class="fas fa-users Teaching"></i> Teaching</a>
+          <a href="#"><i class="fas fa-headset Design"></i> Design</a>
+          <a href="#"><i class="fas fa-headset Contact"></i> Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section>
+    
+    <div class="intro">
+            <h1>raechel a. portelli</h1>
+      <p id="intro">As a geospatial data analyst, I have 15 years of experience leveraging remote sensing data and geographic information systems to study environmental change.  I enjoy telling stories about history through imagery and cartography.  I currently teach cartography and Geographic Object-Based Image Analysis at Michigan State University. 
+        In addition to this academic work, I am an avid landscape photographer and visual artist. I enjoy working in watercolor, ceramic, and stained-glass mediums to express the essence of the physical environment.
+      </p>
+
+      <div id="profphoto">
+      <img src="images/photo.jpg">
+    </div>
+
+  </section>
+    <script type="text/javascript">
+      $(".menu-toggle-btn").click(function(){
+        $(this).toggleClass("fa-times");
+        $(".navigation-menu").toggleClass("active");
+      });
+    </script>
+  </body>
+</html>

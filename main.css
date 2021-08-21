@@ -129,14 +129,9 @@
   }
 
 .intro1 {
-    padding-top: 5%;
-    padding-right: 5%;
-    padding-bottom: 5%;
-    padding-left: 10%;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+    border-top: 100px solid transparent;
     padding: 0 10px;
     min-height: 500px;
     max-width: 1000px;

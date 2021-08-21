@@ -1,6 +1,6 @@
 *{
     margin: 0;
-    padding: 0;
+
     text-decoration: none;
     font-family: 'Julius Sans One', sans-serif;
   }
@@ -14,6 +14,8 @@
     max-width: 1000px;
     padding: 0 10px;
     margin: auto;
+
+
   }
   
   .logo{
@@ -126,40 +128,68 @@
     }
   }
 
-  .intro{
-    
+.intro1 {
     padding-top: 5%;
-    padding-left: 10%;
     padding-right: 5%;
     padding-bottom: 5%;
-    padding-left: 10%;
     padding-left: 10%;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    
-  }
+    min-height: 250px;
+    max-width: 1000px;
+    padding: 0 10px;
+    margin: auto;
+}
 
- #intro{
-     float: left;
-     padding-top: 15px;
-      text-align: justify;
-      font-family: 'Lora', serif;
-      width: 50%;
-  }
+#introText {
+    float: left;
+    padding-top: 15px;
+    text-align: justify;
+    font-family: 'Lora', serif;
+    width: 50%;
+}
 
   #profphoto{
     float: right;
     width: 40%;
-    align-content: flex-start;
     border-left: 15 px;
   }
 
-.grid-container {
-    display: inline-grid;
-    grid-column-gap: 50px;
-    grid-template-columns: 80px 200px auto 40px;
-    justify-content: space-evenly;
+#visualNav {
+    align-items: center;
+    max-width: 1000px;
+    padding: 0 10px;
+    margin: auto;
+    /*float: none;*/
+    padding: 20px 0;
 }
 
+.grid-container {
+    display: grid;
+    grid-gap: 10px;
+    background-color: cadetblue;
+    padding: 10px;
+    align-items: center;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    column-count: 3;
+    justify-content: space-evenly;
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+
+@media (max-width: 600px) {
+    .column {
+        width: 100%;
+    }

@@ -1,3 +1,4 @@
+﻿
 ﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -10,11 +11,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
         </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
+
+
     <header>
       <div class="inner-width">
         <a href="#" class="logo"><p class="logo-nav">r.a. portelli</p></a>
@@ -30,26 +32,23 @@
       </div>
     </header>
 
-    <section>
-        <div class="intro">
-            <h1>raechel a. portelli</h1>
-      <p id="intro">As a geospatial data analyst, I have 15 years of experience leveraging remote sensing data and geographic information systems to study environmental change.  I enjoy telling stories about history through imagery and cartography.  I currently teach cartography and Geographic Object-Based Image Analysis at Michigan State University. 
+    <section class="intro1">
+      <p id="introText">As a geospatial data analyst, I have 15 years of experience leveraging remote sensing data and geographic information systems to study environmental change.  I enjoy telling stories about history through imagery and cartography.  I currently teach cartography and Geographic Object-Based Image Analysis at Michigan State University. 
         In addition to this academic work, I am an avid landscape photographer and visual artist. I enjoy working in watercolor, ceramic, and stained-glass mediums to express the essence of the physical environment.
       </p>
 
-        <div id="profphoto">
-            <img src="images/photo.jpg" width="250px">
-        </div></div>
-  </section>
+        <div id="profphoto"><img src="images/photo.jpg" width="250px"></div>
+        </div>
+    </section>
 
-   <section class="grid-container">
-       
-       <div id="grid-item"><img src="frog.jpg"</div>
-       <div id="grid-item"></div>
-       <div id="grid-item"></div>
 
-   </section>
-
+    <section  id="visualNav">
+        <div class="grid-container">
+                <div class="grid-item" item1><img src="images/frog.jpg" width="250px"></div>
+                <div class="grid-item" item2><img src="images/frog.jpg" width="250px"></div>
+                <div class="grid-item" item3><img src="images/frog.jpg" width="250px"></div>
+        </div>
+    </section>
 
     <script type="text/javascript">
       $(".menu-toggle-btn").click(function(){
@@ -58,4 +57,5 @@
       });
     </script>
   </body>
+
 </html>

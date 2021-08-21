@@ -157,36 +157,18 @@
     border-left: 15 px;
   }
 
-#visualNav {
-    align-items: center;
-    max-width: 1000px;
-    padding: 0 10px;
-    margin: auto;
-    /*float: none;*/
-    padding: 20px 0;
-}
-
-.grid-container {
+  .primary{
+    background: red;
+  }
+  #gallery{
     display: grid;
-    grid-gap: 10px;
-    background-color: cadetblue;
-    padding: 10px;
-    align-items: center;
-}
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin: 12px 60px;
+    height: 100vh;
+  }
 
-.grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    grid-template-columns: auto auto auto;
-    text-align: center;
-    padding: 20px;
-    font-size: 30px;
-    column-count: 3;
-    justify-content: space-evenly;
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-}
+
 
 
 @media (max-width: 600px) {

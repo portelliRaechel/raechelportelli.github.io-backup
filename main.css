@@ -137,9 +137,10 @@
     border-right: 10px solid transparent;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    min-height: 250px;
-    max-width: 1000px;
     padding: 0 10px;
+    min-height: 500px;
+    max-width: 1000px;
+    
     margin: auto;
 }
 
@@ -153,8 +154,15 @@
 
   #profphoto{
     float: right;
-    width: 40%;
+
     border-left: 15 px;
+  }
+
+  #visualNav{
+    max-width: 1000px;
+    margin: auto;
+
+    border-right: 10px solid transparent;
   }
 
   .primary{

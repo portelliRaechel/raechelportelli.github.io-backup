@@ -14,8 +14,6 @@
     max-width: 1000px;
     padding: 0 10px;
     margin: auto;
-
-
   }
   
   .logo{
@@ -175,8 +173,8 @@
     background: #ffd000;
   }
 
-
-@media (max-width: 600px) {
-    .column {
-        width: 100%;
+  @media screen and (max-width: 600px) {
+    .visNav {
+      width: 100%;
     }
+  }

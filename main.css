@@ -3,10 +3,13 @@
     padding: 0;
     text-decoration: none;
     font-family: 'Julius Sans One', sans-serif;
+    margin-bottom: 0;
+    position: relative;
   }
   
   header{
     height: 90px;
+    border: 0;
     background: #ffd000;
   }
   
@@ -171,6 +174,8 @@
   .footer{
     height: 90px;
     background: #ffd000;
+
+    vertical-align: bottom;
   }
 
   @media screen and (max-width: 600px) {

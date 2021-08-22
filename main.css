@@ -1,6 +1,6 @@
 *{
     margin: 0;
-
+    padding: 0;
     text-decoration: none;
     font-family: 'Julius Sans One', sans-serif;
   }
@@ -133,9 +133,9 @@
     border-right: 10px solid transparent;
     border-top: 100px solid transparent;
     padding: 0 10px;
-    min-height: 500px;
+    min-height: 300px;
     max-width: 1000px;
-    
+    max-height: 500px;
     margin: auto;
 }
 
@@ -156,8 +156,7 @@
   #visualNav{
     max-width: 1000px;
     margin: auto;
-
-    border-right: 10px solid transparent;
+    max-height: 400px;
   }
 
   .primary{
@@ -171,7 +170,10 @@
     height: 100vh;
   }
 
-
+  .footer{
+    height: 90px;
+    background: #ffd000;
+  }
 
 
 @media (max-width: 600px) {

@@ -171,10 +171,33 @@
     height: 100vh;
   }
 
-  .footer{
-    height: 90px;
-    background: #ffd000;
+  #courseInfo {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    text-align: justify;
+    font-family: 'Lora', serif;
+  
+}
 
+#lecture{
+  margin-top: 100px;
+  text-align:  left;
+  font-size: 24px;
+  outline: 2px;
+  outline-color: darkred;
+}
+
+#labs{
+  margin-top: 100px;
+  text-align:  left;
+  font-size: 24px;
+  outline: 2px;
+  outline-color: darkred;
+}
+
+  .footer{
+    height: 100px;
+    background: #ffd000;
     vertical-align: bottom;
   }
 
@@ -183,3 +206,4 @@
       width: 100%;
     }
   }
+

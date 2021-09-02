@@ -171,6 +171,8 @@
     height: 100vh;
   }
 
+
+
   #courseInfo {
     margin-top: 10%;
     margin-bottom: 10%;
@@ -179,8 +181,16 @@
   
 }
 
+#courseName{
+  font-size: 40px;
+}
+
+#list{
+  margin-top: 20px;
+}
+
 #lecture{
-  margin-top: 100px;
+  margin-top: 10%;
   text-align:  left;
   font-size: 24px;
   outline: 2px;

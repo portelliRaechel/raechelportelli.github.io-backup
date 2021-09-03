@@ -21,6 +21,13 @@ p{
 	font-size: 14px;
 }
 
+.courseLink{
+	font-family: 'Source Sans Pro', sans-serif;
+	margin-left: 15px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
 .container{
 	display: grid;
 	height:  100vh;

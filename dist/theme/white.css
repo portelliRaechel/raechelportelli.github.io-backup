@@ -304,7 +304,8 @@ min-height: 100%;
 
 .reveal img {
   margin: var(--r-block-margin) 0;
-}
+  max-height: 400px;
+  max-width: 500px;}
 
 /*********************************************
  * LINKS

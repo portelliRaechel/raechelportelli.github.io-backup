@@ -121,7 +121,7 @@ nav i{
 
 
 main{
-	background: #F0F8FF;
+	background: white;
 	grid-area: main;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
@@ -136,21 +136,21 @@ sidebar{
 	padding-top: var(--main-padding);
 }
 #content1{
-	background: #F0F8FF;
+	background: white;
 	grid-area: content1;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 	padding-left: var(--main-padding-left);
 }
 #content2{
-	background: #F0F8FF;
+	background: white;
 	grid-area: content2;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 	padding-left: var(--main-padding-left);
 }
 #content3{
-	background: #F0F8FF;
+	background: white;
 	grid-area: content3;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);

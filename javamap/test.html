@@ -54,6 +54,29 @@ map.addLayer({
 });
 });
 
+// When a click event occurs on a feature in the population layer,
+// open a popup at the location of the click, with population information
+// HTML from the click event's properties.
+map.on('click', 'population', (e) => {
+new mapboxgl.Popup()
+.setLngLat(e.lngLat)
+.setHTML(e.features[0].properties.Shape_Area)
+.addTo(map);
+});
+ 
+// Change the cursor to a pointer when
+// the mouse is over the states layer.
+map.on('mouseenter', 'population', () => {
+map.getCanvas().style.cursor = 'pointer';
+});
+ 
+// Change the cursor back to a pointer
+// when it leaves the states layer.
+map.on('mouseleave', 'population', () => {
+map.getCanvas().style.cursor = '';
+});
+;
+
 </script>
  
 </body>

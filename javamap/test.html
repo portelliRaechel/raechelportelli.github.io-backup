@@ -24,13 +24,13 @@ zoom: 5 // starting zoom
  
 map.on('load', () => {
 // Add a data source containing GeoJSON data.
-map.addSource('maine', {
+map.addSource('population', {
 'type': 'geojson',
 'data': {
 'type': 'Feature',
 'geometry': {
 'type': 'Polygon',
-// These coordinates outline Maine.
+// These coordinates outline java.
 'coordinates': [
 [
 [-67.13734, 45.13745],
@@ -61,9 +61,9 @@ map.addSource('maine', {
  
 // Add a new layer to visualize the polygon.
 map.addLayer({
-'id': 'maine',
+'id': 'population',
 'type': 'fill',
-'source': 'maine', // reference the data source
+'source': 'population', // reference the data source
 'layout': {},
 'paint': {
 'fill-color': '#0080ff', // blue color fill
@@ -74,7 +74,7 @@ map.addLayer({
 map.addLayer({
 'id': 'outline',
 'type': 'line',
-'source': 'maine',
+'source': 'population',
 'layout': {},
 'paint': {
 'line-color': '#000',

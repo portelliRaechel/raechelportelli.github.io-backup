@@ -1,116 +1,110 @@
 <!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src="//d3js.org/topojson.v1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.css' rel='stylesheet' />
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Earthquakes map</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      mapboxgl.accessToken = "pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja2VvOTRzdGMwbmo2MzF0NTk4NXd2YWFzIn0.fS3ZVThwRQA6P9cIthlY-A";
 
-  <style>
-    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
-    #map { 
-      position:absolute; 
-      width: 100%;
-      height: 100%;
-    }
-    svg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-</head>
+      var map;
 
-<body>
-  <div id="map"></div>
-  <script>
-  
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja2VvOTRzdGMwbmo2MzF0NTk4NXd2YWFzIn0.fS3ZVThwRQA6P9cIthlY-A'
-    
-    //Setup mapbox-gl map
-    var map = new mapboxgl.Map({
-      container: 'map', // container id
-      style: 'mapbox://styles/mapbox/satellite-v9',
-      center: [-0.1,51.5119112],
-      zoom: 13.5,
-      
-    })
-    map.scrollZoom.disable()
-    map.addControl(new mapboxgl.Navigation());
+      //following line of code works to display the earthquake points
+      const data = d3
+        .json(
+          "https://gist.githubusercontent.com/franksh/0a1dcf63a0976c78c1f7869a5abf9775/raw/c256896524926042d6d7091154c7523758d0480c/earthquakes.json",
+          //"https://gist.githubusercontent.com/raechelportelli/699cff784223dc81dd3ccaba4ec4c994/raw/7d7fafd3009d1a90fa5adf5cd465f0851f0932f0/population.geojson",
+          function(d) {
+            return d;
+          }
+        )
+        .then(createMap)
+        .then(createDots);
 
-    // Setup our svg layer that we can manipulate with d3
-    var container = map.getCanvasContainer()
-    var svg = d3.select(container).append("svg")
+      function createMap(data) {
+        map = new mapboxgl.Map({
+          container: "map", // container id
+          style: "mapbox://styles/mapbox/light-v9", // stylesheet location
+          zoom: 1 // starting zoom
+        });
 
-    // we calculate the scale given mapbox state (derived from viewport-mercator-project's code)
-    // to define a d3 projection
-    function getD3() {
-      var bbox = document.body.getBoundingClientRect();
-      var center = map.getCenter();
-      var zoom = map.getZoom();
-      // 512 is hardcoded tile size, might need to be 256 or changed to suit your map config
-      var scale = (512) * 0.5 / Math.PI * Math.pow(2, zoom);
+        map.on("viewreset", render);
+        map.on("move", render);
+        map.on("moveend", render);
 
-      var d3projection = d3.geo.mercator()
-        .center([center.lng, center.lat])
-        .translate([bbox.width/2, bbox.height/2])
-        .scale(scale);
-
-      return d3projection;
-    }
-    // calculate the original d3 projection
-    var d3Projection = getD3();
-    
-    var path = d3.geo.path()
-  
-    //var url = 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson';
-    d3.json("schools.geojson", function(err, data) {
-      var points = geojson.feature(data, data.objects.london_stations)
-      //console.log(data[0], getLL(data[0]), project(data[0]))
-      var dots = svg.selectAll("circle.dot")
-        .data(points.features)
-      
-      dots.enter().append("circle").classed("dot", true)
-      .attr("r", 1)
-      .style({
-        fill: "#0082a3",
-        "fill-opacity": 0.6,
-        stroke: "#004d60",
-        "stroke-width": 1
-      })
-      .transition().duration(1000)
-      .attr("r", 6)
-      
-      function render() {
-        d3Projection = getD3();
-        path.projection(d3Projection)
-        
-        dots
-        .attr({
-          cx: function(d) { 
-            var x = d3Projection(d.geometry.coordinates)[0];
-            return x
-          },
-          cy: function(d) { 
-            var y = d3Projection(d.geometry.coordinates)[1];
-            return y
-          },
-        })
+        // Optional: Modify map with d3
+        d3.selectAll(".mapboxgl-canvas")
+          .style("opacity", 1)
+          .style("position", "absolute")
+          .style("z-index", 1);
+        return data;
       }
 
-      // re-render our visualization whenever the view changes
-      map.on("viewreset", function() {
-        render()
-      })
-      map.on("move", function() {
-        render()
-      })
+      function createDots(data) {
+        var container = map.getCanvasContainer();
 
-      // render our initial visualization
-      render()
-    })
+        var svg = d3
+          .select(container)
+          .append("svg")
+          .attr("width", "100%")
+          .attr("height", "2000")
+          // Ensure d3 layer in front of map
+          .style("position", "absolute")
+          .style("z-index", 10);
 
-    
-  </script>
-</body>
+        let dots = svg
+          .selectAll("circle")
+          .data(data.features)
+          .enter()
+          .append("circle")
+          .attr("class", "circle")
+          .attr("r", 5)
+          .style("opacity", 0.7)
+          .style("fill", "#ff3636");
+
+        render();
+      }
+
+      // Projection method:
+      // Project geojson coordinate to the map's current state
+      function project(d) {
+        return map.project(new mapboxgl.LngLat(d[0], d[1]));
+      }
+
+      // Render method redraws lines
+      function render() {
+        d3.selectAll(".circle")
+          .attr("cx", function(d) {
+            return project(d.geometry.coordinates).x;
+          })
+          .attr("cy", function(d) {
+            return project(d.geometry.coordinates).y;
+          });
+      }
+    </script>
+  </body>
+</html>

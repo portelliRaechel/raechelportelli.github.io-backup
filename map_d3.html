@@ -1,105 +1,115 @@
 <!DOCTYPE html>
 <head>
-<meta charset="utf-8">
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<title>MapboxGL & D3.js - dpolygon</title>
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
-<style>
-    
-html, body, #wrapper {
-    width: 100%;
-    height: 100%;
-  padding: 0px;
-  margin: 0px;
-}
-#map { 
-  position:relative; 
-  width: 100%;
-  height: 100%;
-  margin: auto auto;
-}
-svg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.hidden {
-  display: none;
-}
-</style>
+  <meta charset="utf-8">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="//d3js.org/topojson.v1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.css' rel='stylesheet' />
+
+  <style>
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+    #map { 
+      position:absolute; 
+      width: 100%;
+      height: 100%;
+    }
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 
 <body>
-<div id="wrapper">
-    <div id="map"></div>    
-</div>    
-
-<script src='//unpkg.com/d3@5.0.0/dist/d3.min.js'></script>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
-<script>
-d3.json("ken.geojson").then(mapDraw);
+  <div id="map"></div>
+  <script>
+  
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja2VvOTRzdGMwbmo2MzF0NTk4NXd2YWFzIn0.fS3ZVThwRQA6P9cIthlY-A'
     
-    
-function mapDraw(geojson){    
-    //mapboxgs トークン
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpbWl6dSIsImEiOiJjam95MDBhamYxMjA1M2tyemk2aHMwenp5In0.i2kMIJulhyPLwp3jiLlpsA'
-        
     //Setup mapbox-gl map
     var map = new mapboxgl.Map({
-        container: 'map', // container id
-        style: 'mapbox://styles/mapbox/streets-v8',
-        center: [141.15448379999998, 39.702053　],
-        zoom: 4,  
+      container: 'map', // container id
+      style: 'mapbox://styles/mapbox/satellite-v9',
+      center: [-0.1,51.5119112],
+      zoom: 13.5,
+      
     })
-    
-    map.addControl(new mapboxgl.NavigationControl());
-    
-    // svg要素をアペンドする
+    map.scrollZoom.disable()
+    map.addControl(new mapboxgl.Navigation());
+
+    // Setup our svg layer that we can manipulate with d3
     var container = map.getCanvasContainer()
     var svg = d3.select(container).append("svg")
 
+    // we calculate the scale given mapbox state (derived from viewport-mercator-project's code)
+    // to define a d3 projection
+    function getD3() {
+      var bbox = document.body.getBoundingClientRect();
+      var center = map.getCenter();
+      var zoom = map.getZoom();
+      // 512 is hardcoded tile size, might need to be 256 or changed to suit your map config
+      var scale = (512) * 0.5 / Math.PI * Math.pow(2, zoom);
 
-  //緯度経度->パスジェネレーター関数作成
-  var transform = d3.geoTransform({point: projectPoint});
-  var path = d3.geoPath().projection(transform);
-    
-  var featureElement = svg.selectAll("path")
-    .data(geojson.features)
-    .enter()
-        .append("path")
-        .attr("stroke", "red")
-        .attr("fill", "green")
-        .attr("fill-opacity", 0.4)
-    
-    //path要素のアップデート
-    function update() {
-        featureElement.attr("d", path);
+      var d3projection = d3.geo.mercator()
+        .center([center.lng, center.lat])
+        .translate([bbox.width/2, bbox.height/2])
+        .scale(scale);
+
+      return d3projection;
     }
+    // calculate the original d3 projection
+    var d3Projection = getD3();
     
-    //
-    map.on("viewreset", update)
-    map.on("movestart", function(){
-    svg.classed("hidden", true);
-  }); 
-    map.on("rotate", function(){
-    svg.classed("hidden", true);
-  }); 
-    map.on("moveend", function(){
-    update()
-    svg.classed("hidden", false);
-  })
-    
-    //初期レンダリング
-    update()
+    var path = d3.geo.path()
+  
+    //var url = 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson';
+    d3.json("schools.geojson", function(err, data) {
+      var points = geojson.feature(data, data.objects.london_stations)
+      //console.log(data[0], getLL(data[0]), project(data[0]))
+      var dots = svg.selectAll("circle.dot")
+        .data(points.features)
+      
+      dots.enter().append("circle").classed("dot", true)
+      .attr("r", 1)
+      .style({
+        fill: "#0082a3",
+        "fill-opacity": 0.6,
+        stroke: "#004d60",
+        "stroke-width": 1
+      })
+      .transition().duration(1000)
+      .attr("r", 6)
+      
+      function render() {
+        d3Projection = getD3();
+        path.projection(d3Projection)
         
-    
-  function projectPoint(lon, lat) {
-        var point = map.project(new mapboxgl.LngLat(lon, lat));
-    this.stream.point(point.x, point.y);
-  }
-     
-    
-}
+        dots
+        .attr({
+          cx: function(d) { 
+            var x = d3Projection(d.geometry.coordinates)[0];
+            return x
+          },
+          cy: function(d) { 
+            var y = d3Projection(d.geometry.coordinates)[1];
+            return y
+          },
+        })
+      }
+
+      // re-render our visualization whenever the view changes
+      map.on("viewreset", function() {
+        render()
+      })
+      map.on("move", function() {
+        render()
+      })
+
+      // render our initial visualization
+      render()
+    })
 
     
   </script>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Thasadith&display=swap" rel="stylesheet">
+		<title>GEO 326 Lecture 3</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=yes">
+
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/white.css" id="theme">
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+	<body>
+
+	<div class="reveal">
+		<div class="slides" style="height: 75%;">
+		
+		<section data-background-color="white"><h1>Projections</h1>
+		</section>
+
+		<section>
+		<h2 class="r-fit-text">The 3 Components of Projection<a href="https://www.vitsoe.com/us/about/good-design" target="_blank">List</a></h2>
+			<ul>
+				<li>Geodetic Datums</li>
+				<li>Coordinate System</li>
+				<li>Projection</li>
+			</ul>
+		</section>
+
+		<section>
+		<h2 class="r-fit-text">Geographic Coordinate System</h2>
+			<p> system of numbers (latitude, longitude) associated with locations on the earth.</p>
+			<p><a href="https://en.wikipedia.org/wiki/Geographic_coordinate_system"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/FedStats_Lat_long.svg/1280px-FedStats_Lat_long.svg.png"></a></p>
+		</section>
+
+				<section>
+		<h2 class="r-fit-text">Planar vs Polar Coordinates</h2>
+			<p>Polar coordinates utilize the angular relaltionship between two points to describe location. Planar coordinates, or Cartesian coordniates utilize a grid system.</p>
+			<p><a href="https://en.wikipedia.org/wiki/Geographic_coordinate_system"><img src="../cart1/mapsImgs/planarPolarCoordinates.png"></a></p>
+		</section>
+
+		<section>
+		<h2 class="r-fit-text">Geodetic Datum</h2>
+			<p> coordinate system with a reference surface (ie. sea level) that provides known locations for creating maps</p>
+			<p><a href="https://oceanservice.noaa.gov/facts/datum.html"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fsubscription.packtpub.com%2Fbook%2Fapplication_development%2F9781782175797%2F2%2Fch02lvl1sec13%2Fgeodetic-datum-and-geoid&psig=AOvVaw3pu5E9-ovcKyDWGr-gpYHe&ust=1633464386619000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKjm_6zIsfMCFQAAAAAdAAAAABAJ"></a></p>
+		</section>
+
+		<section>
+		<h2 class="r-fit-text">Projection</h2>
+			<p> algorithm for translating spherical coordinates into a 2-dimensional representation./p>
+			<p><a href="https://www.jasondavies.com/maps/transition/"><img src=""></a></p>
+		</section>
+
+		<section>
+			<section>
+			<h2 class="r-fit-text">Common Coordinate Systems<a href="https://www.vitsoe.com/us/about/good-design" target="_blank">List</a></h2>
+				<ul>
+					<li<a href="https://www.usgs.gov/faqs/what-does-term-utm-mean-utm-better-or-more-accurate-latitudelongitude?qt-news_science_products=0#qt-news_science_products">Universal Transverse Mercator (UTM)</a> - planar coordinate system</li>
+					<li><a href="usgs.gov/faqs/what-state-plane-coordinate-system-can-gps-provide-coordinates-these-values?qt-news_science_products=0#qt-news_science_products">State Plane Coordinate System (SPCS)</a>- planar coordinae system limited to the United States</li>
+					<li> <a href="https://www.michigan.gov/documents/DNR_Map_Proj_and_MI_Georef_Info_20889_7.pdf">Michigan GeoRef System</a>-an alternative to the State Plane Coordinate System for the state of Michigan.</li>
+				</ul>
+			</section>
+
+					<section>
+					<h2 class="r-fit-text">UTM</h2>
+					<img src ="https://prd-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/Mapping-UTM%20Grid%20diagram.PNG">
+							<ul>
+									<li>Global</li>
+									<li>Covers 80 degrees north to 80 degrees south latitude</li>
+									<li>Comprised of 60 6 degree zones </li>
+									<li>Each zoness tapers from 666,000m at the equator to 70m at the pole</li>
+									<li>distortion is limited to 1 prt in 1,000 for each zone</li>
+									<li>for large areas multiple coordinate systems are used </li>
+								</ul>
+					</section>
+
+					<section>
+					<h2 class="r-fit-text">SPCS</h2>
+					<img src="https://geodesy.noaa.gov/SPCS/images/spcs27_conus_original.png">
+							<ul>
+									<li>Local to the United States</li>
+									<li>124 zones across all of the states</li>
+									<li>each zone is based on a specific projection</li>
+									<li>distortion is no more thn 1 part in 10,000</li>
+									<li>Multiple systems are used in individual states</li>
+							</ul>
+					</section>
+
+					<section>
+					<h2 class="r-fit-text">Michigan GeoRef System</h2>
+
+							<ul>
+									<li>Local to Michigan</li>
+									<li>Seperate from the SPCS</li>
+									<li>One zone for the entirty of the state</li>
+									<li>Uses a Oblique Mercator projection</li>
+								</ul>
+					</section>
+
+
+		</section>
+
+
+		<section>
+		<h2 class="r-fit-text">TITLE</h2>
+			<p> PARAGRAPH </p>
+			<p><img src="LINK"></p>
+		</section>
+
+				<section>
+		<h2 class="r-fit-text">Common Coordinate Systems<a href="https://www.vitsoe.com/us/about/good-design" target="_blank">List</a></h2>
+			<ul>
+				<li>Universal Transverse Mercator - planar coordinate system</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</section>
+
+		<section>
+		<h2 class="r-fit-text">TITLE</h2>
+			<p> PARAGRAPH </p>
+			<p><img src="LINK"></p>
+		</section>
+
+
+	<script src="dist/reveal.js"></script>
+    <script>
+     Reveal.initialize({
+    width: "100%",
+    height: "100%",
+    margin: 0,
+    minScale: 1,
+    maxScale: 1
+});
+</script>
+
+</body>
+
+</html>

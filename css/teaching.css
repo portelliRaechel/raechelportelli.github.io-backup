@@ -55,6 +55,7 @@ nav{
 	float: right;
 	background: #FFD700;
 	font-family:'Anton', sans-serif;
+	font-size: 20px;
 	grid-area: nav;
 	padding-top: var(--main-padding);
 	align-content: stretch;

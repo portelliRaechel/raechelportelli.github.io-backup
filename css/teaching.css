@@ -6,14 +6,14 @@
 
 *{
     text-decoration: none;
-    font-family: font-family: 'Anton', sans-serif;;
+    font-family:'Anton', sans-serif;;
     position: relative;
   }
 
 
 
 h1{
-	    font-family: font-family: 'Anton', sans-serif;
+	    font-family:'Anton', sans-serif;
 	    margin-left: 10px;
 }
 
@@ -54,7 +54,7 @@ p{
 nav{
 	float: right;
 	background: #FFD700;
-	font-family: font-family: 'Anton', sans-serif;;
+	font-family:'Anton', sans-serif;;
 	grid-area: nav;
 	padding-top: var(--main-padding);
 	align-content: stretch;

@@ -6,7 +6,7 @@
 
 *{
     text-decoration: none;
-    font-family:'Anton', sans-serif;;
+    font-family:'Anton', sans-serif;
     position: relative;
   }
 
@@ -54,7 +54,7 @@ p{
 nav{
 	float: right;
 	background: #FFD700;
-	font-family:'Anton', sans-serif;;
+	font-family:'Anton', sans-serif;
 	grid-area: nav;
 	padding-top: var(--main-padding);
 	align-content: stretch;

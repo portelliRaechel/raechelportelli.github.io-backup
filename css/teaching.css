@@ -125,7 +125,6 @@ main{
 	grid-area: main;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
-	padding-left: 20px;
 	padding-right: 20px;
 }
 

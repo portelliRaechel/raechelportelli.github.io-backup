@@ -38,7 +38,7 @@ p{
 	grid-template-areas: 
 	"logo nav nav nav"
 	"sidebar main main main"
-	"sidebar content1 content2 content3"
+	"sidebar lectures labs assignments"
 	"footer footer footer footer";
 
 	border-radius: var(--main-radius);
@@ -136,21 +136,21 @@ main{
 	padding-top: var(--main-padding);
 }
 
-#content1{
+#lectures{
 	background: white;
 	grid-area: content1;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 	padding-left: var(--main-padding-left);
 }
-#content2{
+#labs{
 	background: white;
 	grid-area: content2;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 	padding-left: var(--main-padding-left);
 }
-#content3{
+#asignments{
 	background: white;
 	grid-area: content3;
 	border-radius: var(--main-radius);

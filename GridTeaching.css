@@ -34,7 +34,7 @@ p{
 	display: grid;
 	height:  100vh;
 	grid-template-columns: .5fr 1fr 1fr 1fr;
-	grid-template-rows: .2fr	.75fr	1.2fr	.25fr;
+	grid-template-rows: .25fr	.75fr	1.2fr	.25fr;
 	grid-template-areas: 
 	"logo nav nav nav"
 	"sidebar main main main"
@@ -49,7 +49,6 @@ p{
 	background: #FFD700;
 	grid-area: logo;
 	align-content: stretch;
-	grid-gap: 0rem;
 }
 
 nav{
@@ -121,7 +120,6 @@ nav i{
     cursor: pointer;
   }
 
-
 main{
 	background: white;
 	grid-area: main;
@@ -137,6 +135,7 @@ main{
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 }
+
 #content1{
 	background: white;
 	grid-area: content1;

@@ -48,7 +48,6 @@ p{
 #logo{
 	background: #FFD700;
 	grid-area: logo;
-	align-content: stretch;
 }
 
 nav{

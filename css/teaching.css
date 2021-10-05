@@ -135,6 +135,10 @@ main{
 	padding-top: var(--main-padding);
 }
 
+body {
+	margin: 0;
+}
+
 #lectures{
 	background: white;
 	grid-area: content1;

@@ -19,14 +19,13 @@ h1{
 
 p{
 	font-family: 'Source Sans Pro', sans-serif;
-
 	font-size: 20pt;
 }
 
 .courseLink{
 	font-family: 'Source Sans Pro', sans-serif;
 	margin-left: 15px;
-	font-size: 14px;
+	font-size: 14pt;
 	font-weight: bold;
 }
 
@@ -55,7 +54,7 @@ nav{
 	float: right;
 	background: #FFD700;
 	font-family:'Anton', sans-serif;
-	font-size: 20px;
+	font-size: 20pt;
 	grid-area: nav;
 	padding-top: var(--main-padding);
 	align-content: stretch;
@@ -72,7 +71,7 @@ nav a{
     margin-left: 10px;
     color: rgb(8, 1, 7);
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 14pt;
     padding: 12px 20px;
     border-radius: 4px;
     transition: .3s linear;
@@ -86,7 +85,7 @@ nav a:hover{
   
 nav i{
     margin-right: 8px;
-    font-size: 16px;
+    font-size: 16pt;
   }
 
 
@@ -116,7 +115,7 @@ nav i{
     height: 90px;
     line-height: 90px ;
     color: rgb(255, 255, 255);
-    font-size: 26px;
+    font-size: 26pt;
     display: none ;
     cursor: pointer;
   }
@@ -168,7 +167,7 @@ body {
 }
 
 #lecture{
-	font-size: 20px;
+	font-size: 20pt;
 	font-family: 'Source Sans Pro', sans-serif;
 }
 

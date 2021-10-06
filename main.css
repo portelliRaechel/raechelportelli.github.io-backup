@@ -38,7 +38,7 @@ p{
 	grid-template-areas: 
 	"logo nav nav nav"
 	"sidebar main main main"
-	"sidebar research teaching art"
+	"sidebar content1 content2 content3"
 	"footer footer footer footer";
 
 	border-radius: var(--main-radius);

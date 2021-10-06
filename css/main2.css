@@ -37,7 +37,7 @@ p{
 	grid-template-rows: .25fr	.75fr	1.2fr	.25fr;
 	grid-template-areas: 
 	"logo nav nav nav"
-	"sidebar main main main"
+	"sidebar main main photo"
 	"sidebar lectures labs assignments"
 	"footer footer footer footer";
 
@@ -124,6 +124,14 @@ nav i{
 main{
 	background: white;
 	grid-area: main;
+	border-radius: var(--main-radius);
+	padding-top: var(--main-padding);
+	padding-right: 20px;
+}
+
+#photo{
+	background: white;
+	grid-area: photo;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 	padding-right: 20px;

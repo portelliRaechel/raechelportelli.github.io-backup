@@ -132,6 +132,7 @@ main{
 #sidebar{
 	background: white;
 	grid-area: sidebar;
+	width: 100px;
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 }

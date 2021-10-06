@@ -158,6 +158,8 @@ body {
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 	padding-left: var(--main-padding-left);
+	align-items: center;
+  justify-content: center;
 }
 #labs{
 	background: white;
@@ -165,6 +167,8 @@ body {
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 	padding-left: var(--main-padding-left);
+	align-items: center;
+  justify-content: center;
 }
 #asignments{
 	background: white;
@@ -172,6 +176,8 @@ body {
 	border-radius: var(--main-radius);
 	padding-top: var(--main-padding);
 	padding-left: var(--main-padding-left);
+	align-items: center;
+  justify-content: center;
 }
 #footer{
 	background: #FFD700;

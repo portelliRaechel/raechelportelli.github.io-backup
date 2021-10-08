@@ -39,7 +39,7 @@ const config = {
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */
-  placeNameField: 'KETCAMAAN',
+  placeNameField: 'KECAMATAN',
   /**
    * (_Optional_) The name of the administrative unit field to use in chart labeling ("Total Votes in placeNameField, placeAdminField")
    */

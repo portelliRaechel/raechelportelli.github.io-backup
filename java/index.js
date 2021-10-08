@@ -35,11 +35,11 @@ const config = {
   /**
    * Labels for the X Axis, one for each field
    */
-  labels: ['PKI', 'NU', 'PNI', 'MASU'],
+  labels: ['1961', '1971', '1981'],
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */
-  placeNameField: 'OBJECTID',
+  placeNameField: 'KETCAMAAN',
   /**
    * (_Optional_) The name of the administrative unit field to use in chart labeling ("Total Votes in placeNameField, placeAdminField")
    */

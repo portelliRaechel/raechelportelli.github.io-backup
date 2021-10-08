@@ -14,7 +14,7 @@ const config = {
   /**
    * The layer within the vector tileset to use for querying
    */
-  sourceLayer: 'kecametan',
+  sourceLayer: 'export_test_kec-47dopv',
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */

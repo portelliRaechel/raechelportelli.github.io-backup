@@ -28,9 +28,10 @@ const config = {
    * Data fields to chart from the source data
    */
   fields: [
-    'POP_1961',
-    'POP_1971',
-    'POP_1981',
+    'perc_PNI_S',
+    'perc_NU_Se',
+    'perc_PKI_S',
+    'per_Mas_1'
   ],
   /**
    * Labels for the X Axis, one for each field

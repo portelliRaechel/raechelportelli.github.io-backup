@@ -23,15 +23,14 @@ const config = {
    * This sets the description in the sidebar
    */
   description:
-    'This map shows the voting percentages for individual political units from the 1954 presidential elections.',
+    'This map shows the voting percentages for individual political parties from the 1954 presidential elections.',
   /**
    * Data fields to chart from the source data
    */
   fields: [
-    'MAX_perc_P',
-    'MAX_perc_N',
-    'MAX_perc_1',
-    'MAX_perc_M',
+    'POP_1961',
+    'POP_1971',
+    'POP_1981',
   ],
   /**
    * Labels for the X Axis, one for each field

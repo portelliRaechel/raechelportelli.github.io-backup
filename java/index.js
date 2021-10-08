@@ -48,7 +48,7 @@ const config = {
    * This sets what type of summary math is used to calculate the initial chart, options are 'avg' or 'sum' (default)
    * Use 'avg' for data that is a rate like turnout %, pizzas per capita or per sq mile
    */
-  summaryType: 'line',
+  summaryType: 'avg',
   /**
    * Label for the graph line
    */
@@ -65,7 +65,7 @@ const config = {
   /**
    * (_Optional_) Set this to 'bar' for a bar chart, default is line
    */
-  chartType: 'bar',
+  chartType: 'line',
   /**
    * The name of the vector source, leave as composite if using a studio style,
    * change if loading a tileset programmatically

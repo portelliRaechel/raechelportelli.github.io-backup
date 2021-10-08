@@ -110,7 +110,7 @@ const chart = c3.generate({
   bindto: '#chart',
   data: {
     // TODO make the initial chart have as many points as the number of fields
-    columns: [['data', 0, 0]],
+    columns: [['data', 0, 0, 0]],
     names: { data: config.dataSeriesLabel },
     // To make a bar chart uncomment this line
     type: config.chartType ? config.chartType : 'line',

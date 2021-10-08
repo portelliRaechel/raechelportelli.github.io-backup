@@ -14,7 +14,7 @@ const config = {
   /**
    * The layer within the vector tileset to use for querying
    */
-  sourceLayer: 'population-81ugsk',
+  sourceLayer: 'kecametan',
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */

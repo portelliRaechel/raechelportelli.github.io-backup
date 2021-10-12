@@ -66,7 +66,7 @@ const config = {
   /**
    * (_Optional_) Set this to 'bar' for a bar chart, default is line
    */
-  chartType: 'line',
+  chartType: 'bar',
   /**
    * The name of the vector source, leave as composite if using a studio style,
    * change if loading a tileset programmatically

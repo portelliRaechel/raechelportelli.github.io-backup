@@ -18,7 +18,7 @@ const config = {
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
-  title: 'Comparison of Voting Outcomes 1954 Election',
+  title: 'Voting Outcomes 1954 Election',
   /**
    * This sets the description in the sidebar
    */

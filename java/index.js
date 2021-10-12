@@ -111,7 +111,11 @@ const chart = c3.generate({
   bindto: '#chart',
   data: {
     // TODO make the initial chart have as many points as the number of fields
-    columns: [['data', 0, 0, 0]],
+    //*columns: [['data', 0, 0, 0]],//
+    columns: [[    'perc_PNI_S',
+    'perc_NU_Se',
+    'perc_PKI_S',
+    'per_Mas_1']]
     names: { data: config.dataSeriesLabel },
     // To make a bar chart uncomment this line
     type: config.chartType ? config.chartType : 'line',

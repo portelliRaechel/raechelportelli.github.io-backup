@@ -89,7 +89,7 @@ const config = {
   /**
    * The name of your choropleth map layer in studio, used for building a legend
    */
-  studioLayerName: 'voting',
+  studioLayerName: 'export-kab-9j226l',
 };
 
 /********************************************************************************

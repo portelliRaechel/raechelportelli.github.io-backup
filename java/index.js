@@ -14,29 +14,28 @@ const config = {
   /**
    * The layer within the vector tileset to use for querying
    */
-  sourceLayer: 'export-kab-9j226l',
+  sourceLayer: 'curmudgeonphd.1s1mw41x',
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
-  title: 'Voting Outcomes 1954 Election',
+  title: 'Indonesian Election of 1954',
   /**
    * This sets the description in the sidebar
    */
   description:
-    'This map shows the voting percentages for individual political parties from the 1954 presidential elections.',
+    'This map provides information on population change and political election results.',
   /**
    * Data fields to chart from the source data
    */
   fields: [
-    'perc_PNI_S',
-    'perc_NU_Se',
-    'perc_PKI_S',
-    'per_Mas_1'
+    'POP_1961',
+    'POP_1971',
+    'POP_1981',
   ],
   /**
    * Labels for the X Axis, one for each field
    */
-  labels: ['PNI','NU','PKI','MASU'],
+  labels: ['1961', '1971', '1981'],
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */
@@ -44,16 +43,16 @@ const config = {
   /**
    * (_Optional_) The name of the administrative unit field to use in chart labeling ("Total Votes in placeNameField, placeAdminField")
    */
-  
+  /*placeAdminField: 'state_abbrev',
   /**
    * This sets what type of summary math is used to calculate the initial chart, options are 'avg' or 'sum' (default)
    * Use 'avg' for data that is a rate like turnout %, pizzas per capita or per sq mile
    */
-  /**summaryType: 'avg',/
+  /*summaryType: 'avg',
   /**
    * Label for the graph line
    */
-  dataSeriesLabel: 'Percentage of Vote',
+  dataSeriesLabel: 'Population',
   /**
    * Basic implementation of zooming to a clicked feature
    */
@@ -83,13 +82,12 @@ const config = {
   /**
    * Legend colors and values, ignored if autoLegend is used. Delete both if no legend is needed.
    */
-  /**legendColors: ['#c200c2', '#a200a3', '#810184', '#600165', '#400246'],
-  legendValues: [13.779, 33.44, 40.88, 46.99, 53.86],
-  */
+  legendColors: ['#c200c2', '#a200a3', '#810184', '#600165',],
+  legendValues: [13.779, 33.44, 40.88, 46.99],
   /**
    * The name of your choropleth map layer in studio, used for building a legend
    */
-  studioLayerName: 'export-kab-9j226l',
+  studioLayerName: 'choropleth-fill',
 };
 
 /********************************************************************************
@@ -111,8 +109,7 @@ const chart = c3.generate({
   bindto: '#chart',
   data: {
     // TODO make the initial chart have as many points as the number of fields
-    columns: [['data', 0, 0, 0, 0]],
-
+    columns: [['data', 0, 0, 0]],
     names: { data: config.dataSeriesLabel },
     // To make a bar chart uncomment this line
     type: config.chartType ? config.chartType : 'bar',
@@ -287,10 +284,12 @@ const updateChartFromClick = (feature) => {
     names: {
       // Update this to match data fields if you don't have the same data schema, it will look for `name` and `state_abbrev` fields
       data: config.placeAdminField
-        ? `${config.dataSeriesLabel} in ${feature.properties[config.placeNameField]
-        }, ${feature.properties[config.placeAdminField]}`
-        : `${config.dataSeriesLabel} in ${feature.properties[config.placeNameField]
-        }`,
+        ? `${config.dataSeriesLabel} in ${
+            feature.properties[config.placeNameField]
+          }, ${feature.properties[config.placeAdminField]}`
+        : `${config.dataSeriesLabel} in ${
+            feature.properties[config.placeNameField]
+          }`,
     },
   });
 };
@@ -319,8 +318,9 @@ const buildLegend = () => {
             ? config.autoLegendDecimals
             : 1
         )}</div>`;
-        const colorEl = `<div class='col h12' style='background-color:${stops[index + 1]
-          }'></div>`;
+        const colorEl = `<div class='col h12' style='background-color:${
+          stops[index + 1]
+        }'></div>`;
         legendColors.innerHTML += colorEl;
         legendValues.innerHTML += valueEl;
       }

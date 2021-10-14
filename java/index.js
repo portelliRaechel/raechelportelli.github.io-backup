@@ -5,8 +5,7 @@ const config = {
   /**
    * Replace this with your Mapbox Access Token (**Do this first!**)
    */
-  accessToken:
-    'pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja2VvOTRzdGMwbmo2MzF0NTk4NXd2YWFzIn0.fS3ZVThwRQA6P9cIthlY-A',
+  accessToken: 'pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja3VxNjkxN2k0c2w0MnptbjU0N242cHFzIn0.DI3yxzJz-CO25QvNLXESOQ',
   /**
    * Replace with the url of your map style
    */
@@ -14,7 +13,7 @@ const config = {
   /**
    * The layer within the vector tileset to use for querying
    */
-  sourceLayer: 'curmudgeonphd.1s1mw41x',
+  sourceLayer: 'kecametan-786cmh',
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
@@ -75,15 +74,15 @@ const config = {
   /**
    * (Experimental) Try to build a legend automatically from the studio style,
    *  only works with a basic [interpolate] expression ramp with stops */
-  autoLegend: true,
+  autoLegend: false,
   /** The number of decimal places to use when rounding values for the legend, defaults to 1 */
   autoLegendDecimals: 1,
 
   /**
    * Legend colors and values, ignored if autoLegend is used. Delete both if no legend is needed.
    */
-  legendColors: ['#c200c2', '#a200a3', '#810184', '#600165',],
-  legendValues: [13.779, 33.44, 40.88, 46.99],
+  legendColors: ['#c200c2', '#a200a3', '#810184',],
+  legendValues: [25000, 50000, 100000,],
   /**
    * The name of your choropleth map layer in studio, used for building a legend
    */

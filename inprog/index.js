@@ -56,12 +56,12 @@ const config = {
   /**
    * Basic implementation of zooming to a clicked feature
    */
-  zoomToFeature: true,
+  zoomToFeature: false,
   /**
    * Color to highlight features on map on click
    * TODO: add parameter for fill color too?
    */
-  highlightColor: '#fff',
+  highlightColor: '#00FFFF',
   /**
    * (_Optional_) Set this to 'bar' for a bar chart, default is line
    */

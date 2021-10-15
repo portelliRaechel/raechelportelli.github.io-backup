@@ -35,7 +35,7 @@ const config = {
   /**
    * Labels for the X Axis, one for each field
    */
-  labels: ['PKI', 'PNI', 'MASU', 'NU'],
+  labels: ['PNI', 'MASU', 'NU', 'PKI'],
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */

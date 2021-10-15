@@ -13,7 +13,7 @@ const config = {
   /**
    * The layer within the vector tileset to use for querying
    */
-  sourceLayer: 'Kabupaten-2bi7nl',
+  sourceLayer: 'kabUpd-c6yclh',
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
@@ -27,10 +27,10 @@ const config = {
    * Data fields to chart from the source data
    */
   fields: [
-    'MAX_perc_1',
-    'MAX_perc_M',
-    'MAX_perc_N',
-    'MAX_perc_P',
+    'MAX_p_PNI',
+    'MAX_p_MASU',
+    'MAX_p_NU',
+    'MAX_p_PKI',
   ],
   /**
    * Labels for the X Axis, one for each field

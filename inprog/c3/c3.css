@@ -79,7 +79,7 @@
 
 /*-- Bar --*/
 .c3-bar {
-  stroke-width: 0;
+  stroke-width: 4;
 }
 
 .c3-bar._expanded_ {

@@ -75,15 +75,15 @@ const config = {
   /**
    * (Experimental) Try to build a legend automatically from the studio style,
    *  only works with a basic [interpolate] expression ramp with stops */
-  autoLegend: true,
+  autoLegend: false,
   /** The number of decimal places to use when rounding values for the legend, defaults to 1 */
   autoLegendDecimals: 2,
 
   /**
    * Legend colors and values, ignored if autoLegend is used. Delete both if no legend is needed.
    */
-  legendColors: ['#FFE4C4', '#8A2BE2', '#7FFF00','#5F9EA0'],
-  legendValues: [-0.2, -0.01, 0.01, 0.1,.32],
+  legendColors: ['#FFE4C4', '#8A2BE2', '#7FFF00'],
+  legendValues: [-0.2, -0.01, 0.01, 0.1],
   /**
    * The name of your choropleth map layer in studio, used for building a legend
    */
@@ -109,7 +109,7 @@ const chart = c3.generate({
   bindto: '#chart',
   data: {
     // TODO make the initial chart have as many points as the number of fields
-    columns: [['data', 0, 0, 0]],
+    columns: [['data', 0, 0, 0,0]],
     names: { data: config.dataSeriesLabel },
     // To make a bar chart uncomment this line
     type: config.chartType ? config.chartType : 'bar',

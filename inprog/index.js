@@ -13,7 +13,7 @@ const config = {
   /**
    * The layer within the vector tileset to use for querying
    */
-  sourceLayer: 'Kabupaten-2bI7nl',
+  sourceLayer: 'Kabupaten-2bi7nl',
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */

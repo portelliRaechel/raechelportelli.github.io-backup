@@ -56,12 +56,12 @@ const config = {
   /**
    * Basic implementation of zooming to a clicked feature
    */
-  zoomToFeature: true,
+  zoomToFeature: false,
   /**
    * Color to highlight features on map on click
    * TODO: add parameter for fill color too?
    */
-  highlightColor: '#fff',
+  highlightColor: '#00FFFF',
   /**
    * (_Optional_) Set this to 'bar' for a bar chart, default is line
    */
@@ -82,8 +82,9 @@ const config = {
   /**
    * Legend colors and values, ignored if autoLegend is used. Delete both if no legend is needed.
    */
-  legendColors: ['#f6ebfc', '#efc7f9', '#ebadf6', '#e596f0'],
+    legendColors: ['#f6ebfc', '#efc7f9', '#ebadf6', '#e596f0'],
   legendValues: [-0.2, -0.01, 0.01, 0.1],
+  /**
   /**
    * The name of your choropleth map layer in studio, used for building a legend
    */

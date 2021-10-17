@@ -335,6 +335,7 @@ pre {
 }
 legend {
   width: 100%;
+  height: auto;
 }
 [data-assembly-focus-control] :focus {
   outline: 0;

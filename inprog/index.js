@@ -22,7 +22,7 @@ const config = {
    * This sets the description in the sidebar
    */
   description:
-    'This map provides information on population change and political election results.',
+    'Results of 1954 Political Election and % Population Change.',
   /**
    * Data fields to chart from the source data
    */
@@ -52,7 +52,7 @@ const config = {
   /**
    * Label for the graph line
    */
-  dataSeriesLabel: 'Percentage of Political Vote',
+  dataSeriesLabel: '%',
   /**
    * Basic implementation of zooming to a clicked feature
    */

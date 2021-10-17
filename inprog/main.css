@@ -16,6 +16,10 @@
   fill: none;
 }
 
-data {
+.data {
   color: black;
+}
+
+.c3-tooltip-container{
+  color: red;
 }

@@ -1,3 +1,17 @@
 #legend {
   width: 276px;
 }
+
+.c3 .c3-axis-x path,
+.c3-ygrid-line line {
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.c3 .c3-axis-y path,
+.c3 .c3-axis-y line {
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+}

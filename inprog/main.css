@@ -21,7 +21,7 @@
 }
 
 .c3-tooltip-container{
-  color: red;
+  color: black;
   background-color: white;
 }
 
@@ -35,6 +35,6 @@
 .c3-bar-2 {
    fill:#26142a !important;
 }
-.c3-bar-2 {
+.c3-bar-3 {
    fill: #26142a !important;
 }

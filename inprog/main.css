@@ -24,3 +24,13 @@
   color: red;
   background-color: white;
 }
+
+.c3-bar-0 {
+   fill:rgb(204, 0, 102)!important;
+}
+.c3-bar-1 {
+   fill:rgb(51, 153, 255)!important;
+}
+.c3-bar-2 {
+   fill: rgb(0, 255, 204)!important;
+}

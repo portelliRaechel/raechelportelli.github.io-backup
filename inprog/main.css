@@ -38,3 +38,9 @@
 .c3-bar-3 {
    fill: #26142a !important;
 }
+
+.c3-legend-item-tile {
+  stroke: 10px;
+  stroke: rgb(31, 119, 180)
+}
+  

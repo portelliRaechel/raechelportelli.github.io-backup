@@ -56,7 +56,7 @@ const config = {
   /**
    * Basic implementation of zooming to a clicked feature
    */
-  zoomToFeature: false,
+  zoomToFeature: true,
   /**
    * Color to highlight features on map on click
    * TODO: add parameter for fill color too?

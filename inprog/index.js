@@ -27,10 +27,10 @@ const config = {
    * Data fields to chart from the source data
    */
   fields: [
-    'MAX_p_PNI',
-    'MAX_p_MASU',
-    'MAX_p_NU',
-    'MAX_p_PKI',
+    'PNI_per',
+    'MASU',
+    'NU_per',
+    'PKI_per',
   ],
   /**
    * Labels for the X Axis, one for each field

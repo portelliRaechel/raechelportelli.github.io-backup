@@ -52,7 +52,7 @@ const config = {
   /**
    * Label for the graph line
    */
-  dataSeriesLabel: '%',
+  dataSeriesLabel: ' ',
   /**
    * Basic implementation of zooming to a clicked feature
    */

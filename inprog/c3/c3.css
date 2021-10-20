@@ -131,6 +131,13 @@
   stroke-width: 1;
 }
 
+.c3-legend-item-tile {
+  opacity: 0.75;
+  fill: rgb(173, 19, 19);
+  stroke: rgb(148, 12, 12);
+  stroke-width: 10;
+}
+
 /*-- Title --*/
 .c3-title {
   font: 14px sans-serif;

@@ -61,7 +61,7 @@ const config = {
    * Color to highlight features on map on click
    * TODO: add parameter for fill color too?
    */
-  highlightColor: '#00FFFF',
+  highlightColor: '#ff0000',
   /**
    * (_Optional_) Set this to 'bar' for a bar chart, default is line
    */

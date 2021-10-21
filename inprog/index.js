@@ -30,12 +30,12 @@ const config = {
     'MAX_perc_N',
     'MAX_perc_P',
     'MAX_perc_1',
-    'MAX_perc_M',
+    'MAX_perc_M'
   ],
   /**
    * Labels for the X Axis, one for each field
    */
-  labels: ['NU', 'PKI','PNI', 'MASU', ],
+  labels: ['NU', 'PKI','PNI', 'MASU'],
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */

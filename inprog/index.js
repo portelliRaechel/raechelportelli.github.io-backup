@@ -13,7 +13,7 @@ const config = {
   /**
    * The layer within the vector tileset to use for querying
    */
-  sourceLayer: 'kabupaten-9wp6sx',
+  sourceLayer: 'kabupaten_gdf-0osmrh',
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
@@ -27,15 +27,15 @@ const config = {
    * Data fields to chart from the source data
    */
   fields: [
-    'PNI_per',
-    'MASU',
-    'NU_per',
-    'PKI_per',
+    'MAX_perc_N',
+    'MAX_perc_P',
+    'MAX_per_1',
+    'MAX_per_M',
   ],
   /**
    * Labels for the X Axis, one for each field
    */
-  labels: ['PNI', 'MASU', 'NU', 'PKI'],
+  labels: ['NU', 'PKI','PNI', 'MASU', ],
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */

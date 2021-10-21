@@ -29,8 +29,8 @@ const config = {
   fields: [
     'MAX_perc_N',
     'MAX_perc_P',
-    'MAX_per_1',
-    'MAX_per_M',
+    'MAX_perc_1',
+    'MAX_perc_M',
   ],
   /**
    * Labels for the X Axis, one for each field

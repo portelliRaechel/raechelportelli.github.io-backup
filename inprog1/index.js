@@ -91,6 +91,93 @@ const config = {
   studioLayerName: 'choropleth-fill',
 };
 
+const config1 = {
+  /**
+   * Replace this with your Mapbox Access Token (**Do this first!**)
+   */
+  accessToken: 'pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja3VxNjkxN2k0c2w0MnptbjU0N242cHFzIn0.DI3yxzJz-CO25QvNLXESOQ',
+  /**
+   * Replace with the url of your map style
+   */
+  mapStyle: 'mapbox://styles/curmudgeonphd/ckof3wsww4ig418jrc0eezyjx',
+  /**
+   * The layer within the vector tileset to use for querying
+   */
+  sourceLayer: 'kecametan-c9rwb6',
+  /**
+   * This sets the title in the sidebar and the <title> tag of the app
+   */
+  title: 'Indonesian Election of 1954',
+  /**
+   * This sets the description in the sidebar
+   */
+  description:
+    'Results of 1954 Political Election and % Population Change.',
+  /**
+   * Data fields to chart from the source data
+   */
+  fields: [
+    'POP_PerCh'
+  ],
+  /**
+   * Labels for the X Axis, one for each field
+   */
+  labels: ['Population Change],
+  /**
+   * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
+   */
+  placeNameField: 'KAB_KOTA',
+  /**
+   * (_Optional_) The name of the administrative unit field to use in chart labeling ("Total Votes in placeNameField, placeAdminField")
+   */
+  /*placeAdminField: 'state_abbrev',
+  /**
+   * This sets what type of summary math is used to calculate the initial chart, options are 'avg' or 'sum' (default)
+   * Use 'avg' for data that is a rate like turnout %, pizzas per capita or per sq mile
+   */
+  /*summaryType: 'avg',
+  /**
+   * Label for the graph line
+   */
+  dataSeriesLabel: '%',
+  /**
+   * Basic implementation of zooming to a clicked feature
+   */
+  zoomToFeature: true,
+  /**
+   * Color to highlight features on map on click
+   * TODO: add parameter for fill color too?
+   */
+  highlightColor: '#ff0000',
+  /**
+   * (_Optional_) Set this to 'bar' for a bar chart, default is line
+   */
+  chartType: 'bar',
+  /**
+   * The name of the vector source, leave as composite if using a studio style,
+   * change if loading a tileset programmatically
+   */
+  sourceId: 'composite',
+
+  /**
+   * (Experimental) Try to build a legend automatically from the studio style,
+   *  only works with a basic [interpolate] expression ramp with stops */
+  autoLegend: false,
+  /** The number of decimal places to use when rounding values for the legend, defaults to 1 */
+  autoLegendDecimals: 2,
+
+  /**
+   * Legend colors and values, ignored if autoLegend is used. Delete both if no legend is needed.
+   */
+    legendColors: ['#f0ecd9'],
+  legendValues: [-0.2],
+  /**
+  /**
+   * The name of your choropleth map layer in studio, used for building a legend
+   */
+  studioLayerName: 'choropleth-fill',
+};
+
 /********************************************************************************
  * Don't edit below here unless you want to customize things further
  */
@@ -119,6 +206,26 @@ const chart = c3.generate({
     x: {
       type: 'category',
       categories: config.labels,
+    },
+  },
+  size: {
+    height: 300,
+  },
+});
+
+const chart = c3.generate({
+  bindto: '#chart',
+  data: {
+    // TODO make the initial chart have as many points as the number of fields
+    columns: [['data', 0, 0, 0,0]],
+    names: { data: config1.dataSeriesLabel },
+    // To make a bar chart uncomment this line
+    type: config1.chartType ? config1.chartType : 'bar',
+  },
+  axis: {
+    x: {
+      type: 'category',
+      categories: config1.labels,
     },
   },
   size: {

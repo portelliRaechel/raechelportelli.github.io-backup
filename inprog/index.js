@@ -83,7 +83,7 @@ const config = {
    * Legend colors and values, ignored if autoLegend is used. Delete both if no legend is needed.
    */
     legendColors: ['#975daa', '#cfdade', '#b9d5c6', '#346f39'],
-  legendValues: [-16%, -8%, +8%, +16%],
+  legendValues: [-16, -8, 8, 16],
   /**
   /**
    * The name of your choropleth map layer in studio, used for building a legend

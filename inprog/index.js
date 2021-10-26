@@ -22,7 +22,7 @@ const config = {
    * This sets the description in the sidebar
    */
   description:
-    'The first democratic election in Indonesia in 1957 was dominated by four major parties. Two Muslim theologian parties, the NU (Nahdlatul Ulama) and the MAS (Masyumi Party) along with the PKI (Communist Party of Indonesia) and PNI (Indonesian National Party).  The September 30 Movement of 1965, led to the overthrow of the elected government and months of violence throughout the country. As a result, ',
+    '1957 Election Results for the four major political parties of Indonesia by Regency.',
   /**
    * Data fields to chart from the source data
    */

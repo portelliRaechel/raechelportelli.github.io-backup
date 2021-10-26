@@ -22,7 +22,8 @@ const config = {
    * This sets the description in the sidebar
    */
   description:
-    'Results of 1954 Political Election and % Population Change.',
+    'The first democratic election in Indonesia in 1957 was dominated by four major parties. Two Muslim theologian parties, the NU (Nahdlatul Ulama) and the MAS (Masyumi Party) along with the PKI (Communist Party of Indonesia) and PNI (Indonesian National Party).  The September 30 Movement of 1965, led to the overthrow of the elected government and months of violence throughout the country. As a result, 
+',
   /**
    * Data fields to chart from the source data
    */
@@ -35,7 +36,7 @@ const config = {
   /**
    * Labels for the X Axis, one for each field
    */
-  labels: ['NU', 'PKI','PNI', 'MASU'],
+  labels: ['NU', 'PKI','PNI', 'MAS'],
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */

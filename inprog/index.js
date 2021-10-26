@@ -17,7 +17,8 @@ const config = {
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
-  title: 'Maybe1',
+  title: 
+    'Maybe1',
   /**
    * This sets the description in the sidebar
    */

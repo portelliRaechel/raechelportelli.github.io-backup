@@ -22,8 +22,7 @@ const config = {
   /**
    * This sets the description in the sidebar
    */
-  description:
-    'Maybe',
+  description: 'Maybe',
   /**
    * Data fields to chart from the source data
    */

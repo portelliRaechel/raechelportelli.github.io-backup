@@ -17,7 +17,7 @@ const config = {
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
-  title: '1957 Election Results for the four major political parties of Indonesia by Regency',
+  title: 'Maybe1',
   /**
    * This sets the description in the sidebar
    */

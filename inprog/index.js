@@ -18,11 +18,11 @@ const config = {
    * This sets the title in the sidebar and the <title> tag of the app
    */
   title: 
-    'Maybe1',
+    'Comparison of 1957 Indonesian Election Results and Population Dynamics 1960-1970',
   /**
    * This sets the description in the sidebar
    */
-  description: 'Maybe',
+  description: 'The 1957 Election was dominated by four political parties. The the NU (Nahdlatul Ulama) and the MAS (Masyumi Party) along with the PKI (Communist Party of Indonesia) and PNI (Indonesian National Party).',
   /**
    * Data fields to chart from the source data
    */
@@ -52,7 +52,7 @@ const config = {
   /**
    * Label for the graph line
    */
-  dataSeriesLabel: '%',
+  dataSeriesLabel: 'percent of vote',
   /**
    * Basic implementation of zooming to a clicked feature
    */

@@ -17,12 +17,12 @@ const config = {
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
-  title: 'Indonesian Election of 1954',
+  title: 
+    'The September 30 Movement: Politics and Population Change',
   /**
    * This sets the description in the sidebar
    */
-  description:
-    'Results of 1954 Political Election and % Population Change.',
+  description: 'The 1957 Election was dominated by four political parties. The Islamic parties NU (Nahdlatul Ulama) and the MAS (Masyumi Party) along with the PKI (Communist Party of Indonesia) and PNI (Indonesian National Party). Following the September 30 Movement in 1965, members and sympathizers of the Communist Party were imprisoned or disappeared. For more information on this event and the methods used to calculate the population loss see <a href="https://www.jstor.org/stable/10.5728/indonesia.104.0027">(Chandra 2017)</a>. Funding for this research was provided by the Harry Frank Guggenheim Foundation.',
   /**
    * Data fields to chart from the source data
    */
@@ -35,7 +35,7 @@ const config = {
   /**
    * Labels for the X Axis, one for each field
    */
-  labels: ['NU', 'PKI','PNI', 'MASU'],
+  labels: ['NU', 'PKI','PNI', 'MAS'],
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */
@@ -52,7 +52,7 @@ const config = {
   /**
    * Label for the graph line
    */
-  dataSeriesLabel: '%',
+  dataSeriesLabel: 'percent of vote',
   /**
    * Basic implementation of zooming to a clicked feature
    */
@@ -82,8 +82,8 @@ const config = {
   /**
    * Legend colors and values, ignored if autoLegend is used. Delete both if no legend is needed.
    */
-    legendColors: ['#f0ecd9', '#f0d7a8', '#f0c780', '#e4a02c'],
-  legendValues: [-0.2, -0.01, 0.01, 0.1],
+    legendColors: ['#975daa', '#cfdade', '#b9d5c6', '#346f39'],
+  legendValues: ['-16%', '-8%', '8%', '16%'],
   /**
   /**
    * The name of your choropleth map layer in studio, used for building a legend

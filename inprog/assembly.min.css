@@ -467,8 +467,8 @@ legend {
 }
 .btn {
   display: inline-block;
+  background-color: #301934;
   font-weight: 700;
-  background-color: #448ee4;
   font-size: 12px;
   color: #fff;
   border-radius: 18px;
@@ -479,7 +479,7 @@ legend {
 .btn--stroke {
   background-color: transparent;
   box-shadow: inset 0 0 0 1px currentColor;
-  color: #448ee4;
+  color: #7a07ab;
 }
 .btn--stroke--2 {
   box-shadow: inset 0 0 0 2px currentColor;
@@ -497,7 +497,7 @@ legend {
 .btn--stroke.is-active,
 .btn--stroke:hover {
   background-color: transparent;
-  color: #346db0;
+  color: #27065c;
 }
 .btn.btn--stroke:disabled,
 .btn:disabled {

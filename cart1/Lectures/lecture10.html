@@ -19,10 +19,11 @@
 
 	<div class="reveal">
 		<div class="slides" style="height: 75%;">
-			<section data-background-color="white"><h1>Proportional Symbols </h1>
+			<section data-background-color="white"><h1>Symbol Maps</h1>
 			</section>
 
             <section>
+                <section>
                 <h2 class="r-fit-text">It's all about size</h2>
                     <p>The map symbols size varies based on the data</p>
                     <ul>
@@ -32,31 +33,73 @@
             </section>
 
             <section><h2 class="r-fit-text">Proportional Symbol Map</h2>
-                <img src="../cart1/mapsImgs/PropSymMap.jpg">
+                <img src="../cart1/mapsImgs/PropSymMap.JPG">
             </section>
 
             <section><h2 class="r-fit-text">Proportional Symbol Map</h2>
-                <img src="../cart1/mapsImgs/GradSymMap.jpg">
+                <img src="../cart1/mapsImgs/GradSymMap.JPG">
+            </section>
+        </section>
+
+        <section><h2 class="r-fit-text">When to use these maps? </h2>
+            <ul>
+                <li>When a dot density map of the data would be too occluded</li>
+                <li>Symbolization of totals over an area</li>
+                <li>Symbolization of totals for a specific places</li>
+                <li>When comparing subdivisions</li>
+            </ul>
             </section>
 
+            <section><h2 class="r-fit-text">When not to use these maps? </h2>
+                <ul>
+                    <li>Interval level data (this is arguable)</li>
+                    <li>Symbolization of density</li>
+                    <li>Data with small data ranges</li>
+                </ul>
+                </section>
+    
 
-			<section><h2>Slide 1- List</h2>
+			<section><h2 class="r-fit-text">Considerations</h2>
 				<ul>
-					<li></li>
-					<li></li>
-					<li> </li>
+					<li>Ratio and interval data can be used in these maps</li>
+					<li>Can be used to to locate specific place values better than dot density maps</li>
+					<li>Enumeration unit size doesn't matter so you do not need to normalize your data</li>
 				</ul>
 				</section>
 
-
-
-		<section><h2 class="r-fit-text">Slide 3 - Link</h2>
-			<p></p>
-		<p><a href="" target="_blank"><img src=""></a></p>	
+                <section><h2 class="r-fit-text">More Considerations</h2>
+                        <ul>
+                            <li>Make sure differences are easily distinguishable.</li>
+                            <li>Overlap is inevitable, but transparency can help</li>
+                            <li>For GS cases, make sure all classes are present in the legend</li>
+                            <li>Simple shapes are best so that comparison is easier</li>
+                        </ul>
+                </section>
+                
+		<section><h2 class="r-fit-text">Symbol Size Scaling</h2>
+			<p>Perception of symbol  area is difficult for humans.</p>
+		<p><img src="../cart1/mapsImgs/SymbolScaling.png"></a></p>	
 		</section>
 
-		<section><h2 class="r-fit-text">Slide 4 - Image</h2>
-			<img src="../cart1/mapsImgs/Symmetry.jpg">
+        <section><h2 class="r-fit-text">Symbol Size Scaling: Proportional Symbol Maps</h2>
+			<p>Mathematical: symbol size = (maximum symbol size) * (square root / max square root)</p>
+            <p>Perceptual: uses a power function </p>
+		</section><h2 class="r-fit-text">Symbol Size Scaling: Perceptual</h2>
+            <p><img src="../cart1/mapsImgs/perScale1_percept.jpg"><img src="../cart1/mapsImgs/perScale2_prop.jpg"></p>
+        <section>
+
+
+        </section>
+
+        <section><h2 class="r-fit-text">How do I choose?</h2>
+            <ul>
+                <li>Very large numbers, outliers, and large data ranges can make the symbology cumbersome and overwhelm smaller values.</li>
+                <li>In those cases, using graduated symbols instead of proportional ones can alieviate some issues</li>
+                <li>For outlier cases, a single symbol can be used to represent values outside of a prefered threshold</li>
+            </ul>
+
+		<section><h2 class="r-fit-text">Glyphs</h2>
+			<img src="../cart1/mapsImgs/Symmetry.JPG">
 		</section>
 
 			<script src="../../dist/reveal.js"></script>

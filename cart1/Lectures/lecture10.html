@@ -56,7 +56,7 @@
                     <li>Symbolization of density</li>
                     <li>Data with small data ranges</li>
                 </ul>
-                </section>
+             </section>
     
 
 			<section><h2 class="r-fit-text">Considerations</h2>
@@ -65,31 +65,32 @@
 					<li>Can be used to to locate specific place values better than dot density maps</li>
 					<li>Enumeration unit size doesn't matter so you do not need to normalize your data</li>
 				</ul>
-				</section>
+		</section>
 
-                <section><h2 class="r-fit-text">More Considerations</h2>
+         <section><h2 class="r-fit-text">More Considerations</h2>
                         <ul>
                             <li>Make sure differences are easily distinguishable.</li>
                             <li>Overlap is inevitable, but transparency can help</li>
                             <li>For GS cases, make sure all classes are present in the legend</li>
                             <li>Simple shapes are best so that comparison is easier</li>
                         </ul>
-                </section>
+        </section>
                 
 		<section><h2 class="r-fit-text">Symbol Size Scaling</h2>
 			<p>Perception of symbol  area is difficult for humans.</p>
 		<p><img src="../cart1/mapsImgs/SymbolScaling.png"></a></p>	
 		</section>
 
-        <section><h2 class="r-fit-text">Symbol Size Scaling: Proportional Symbol Maps</h2>
+        <section>
+            <h2 class="r-fit-text">Symbol Size Scaling: Proportional Symbol Maps</h2>
 			<p>Mathematical: symbol size = (maximum symbol size) * (square root / max square root)</p>
             <p>Perceptual: uses a power function </p>
-		</section><h2 class="r-fit-text">Symbol Size Scaling: Perceptual</h2>
-            <p><img src="../cart1/mapsImgs/perScale1_percept.jpg"><img src="../cart1/mapsImgs/perScale2_prop.jpg"></p>
+		</section>
+        
         <section>
-
-
-        </section>
+         <h2 class="r-fit-text">Symbol Size Scaling: Perceptual</h2>
+            <p><img src="../cart1/mapsImgs/perScale1_percept.jpg"><img src="../cart1/mapsImgs/perScale2_prop.jpg"></p>
+        </div>section>
 
         <section><h2 class="r-fit-text">How do I choose?</h2>
             <ul>
@@ -97,10 +98,18 @@
                 <li>In those cases, using graduated symbols instead of proportional ones can alieviate some issues</li>
                 <li>For outlier cases, a single symbol can be used to represent values outside of a prefered threshold</li>
             </ul>
+        </section>
+        
+        <section><h2 class="r-fit-text">Cartograms</h2>
+            <p>size/area of enumeration unit is changed to reflect data source.</p>
+            <p>Use: reduces bias created by aggregating data by regions in choropleth map as areas with more data are shown larger than areas with less/smaller data</p>
+            <p>Note: sometimes it can be so deformed it is difficult to undertand the underlying geography</p>
+        </section>
 
-		<section><h2 class="r-fit-text">Glyphs</h2>
-			<img src="../cart1/mapsImgs/Symmetry.JPG">
-		</section>
+        <section><h2 class="r-fit-text">Worldmapper.org Example</h2>
+            <img src="https://worldmapper.org/wp-content/uploads/2019/07/Nature_IUCN_AnimalsExtinct_2019.png">
+        </section>
+
 
 			<script src="../../dist/reveal.js"></script>
     <script>

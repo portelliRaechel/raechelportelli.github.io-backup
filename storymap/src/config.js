@@ -20,7 +20,7 @@ var config = {
         "The history of the Salm Witch Trials are taught in many U.S. school classes each year. These trials were only a fraction of the witch trials that occured in the original colonies. This map shows the distribution of 274 such accusations along the East Coast.",
       location: {
         center: [-78.13, 39.02],
-        zoom: 4.75
+        zoom: 4.75,
       },
       mapAnimation: "flyTo",
       rotateAnimation: false,
@@ -48,7 +48,7 @@ var config = {
         "The Salem Witch Trials began in the spring of 1692. The first victim, Bridget Bishop, was hung on June 10th. By the fall, over 150 men, women, and children were accused of witchcraft. By spring of 1693, those imprisonated for witchcraft were exonerated. However, the final death toll included 19 were hanged on Gallows Hill, an elderly man was pressed to death, and several others died in jail.",
       location: {
         center: [42.53, -70.7866],
-        zoom: 4.75
+        zoom: 4.75,
       },
       mapAnimation: "flyTo",
       rotateAnimation: false,

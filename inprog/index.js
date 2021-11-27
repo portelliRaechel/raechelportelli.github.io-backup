@@ -48,7 +48,7 @@ const config = {
   /**
    * Label for the graph line
    */
-  dataSeriesLabel: "percent of vote",
+  dataSeriesLabel: "percent of vote ",
   /**
    * Basic implementation of zooming to a clicked feature
    */

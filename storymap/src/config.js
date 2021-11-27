@@ -7,7 +7,7 @@ var config = {
   theme: "light",
   use3dTerrain: false,
   title: "More than Salem",
-  subtitle: "A descriptive and interesting subtitle to draw in the reader",
+  //subtitle: "A descriptive and interesting subtitle to draw in the reader",
   byline: "By R.A. Portelli",
   footer: "Source: source citations, etc.",
   chapters: [

@@ -2,7 +2,7 @@ var config = {
   style: "mapbox://styles/curmudgeonphd/ckwi6az9e2dqv14lhfdni23w0",
   accessToken:
     "pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja3VxNjkxN2k0c2w0MnptbjU0N242cHFzIn0.DI3yxzJz-CO25QvNLXESOQ",
-  showMarkers: true,
+  showMarkers: false,
   markerColor: "#3FB1CE",
   theme: "light",
   use3dTerrain: false,

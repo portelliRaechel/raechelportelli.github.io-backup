@@ -19,7 +19,7 @@ var config = {
       description:
         "The history of the Salem Witch Trials are taught in many U.S. school classes each year. These trials were only a fraction of the witch trials that occured in the original colonies. This map shows the distribution of 274 such accusations along the East Coast.",
       location: {
-        center: [-78.13, 39.02],
+        center: [-70.89, 39.86],
         zoom: 4.75,
          pitch: 0,
          bearing: 0

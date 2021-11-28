@@ -4,7 +4,7 @@ var config = {
     "pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja3VxNjkxN2k0c2w0MnptbjU0N242cHFzIn0.DI3yxzJz-CO25QvNLXESOQ",
   showMarkers: false,
   markerColor: "#3FB1CE",
-  theme: "light",
+  theme: "dark",
   use3dTerrain: false,
   title: "More than Salem",
   //subtitle: "A descriptive and interesting subtitle to draw in the reader",

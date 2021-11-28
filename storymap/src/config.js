@@ -17,7 +17,7 @@ var config = {
       hidden: false,
       title: "1607 - 1739",
       description:
-        "The history of the Salm Witch Trials are taught in many U.S. school classes each year. These trials were only a fraction of the witch trials that occured in the original colonies. This map shows the distribution of 274 such accusations along the East Coast.",
+        "The history of the Salem Witch Trials are taught in many U.S. school classes each year. These trials were only a fraction of the witch trials that occured in the original colonies. This map shows the distribution of 274 such accusations along the East Coast.",
       location: {
         center: [-78.13, 39.02],
         zoom: 4.75,

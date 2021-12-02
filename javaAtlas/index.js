@@ -5,53 +5,42 @@ const config = {
   /**
    * Replace this with your Mapbox Access Token (**Do this first!**)
    */
-  accessToken: 'pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja3VxNjkxN2k0c2w0MnptbjU0N242cHFzIn0.DI3yxzJz-CO25QvNLXESOQ',
+  accessToken:
+    "pk.eyJ1IjoiY3VybXVkZ2VvbnBoZCIsImEiOiJja3VxNjkxN2k0c2w0MnptbjU0N242cHFzIn0.DI3yxzJz-CO25QvNLXESOQ",
   /**
    * Replace with the url of your map style
    */
-  mapStyle: 'mapbox://styles/curmudgeonphd/ckrl5qsor2c5419lu8xgib9o6',
+  mapStyle: "mapbox://styles/curmudgeonphd/ckof3wsww4ig418jrc0eezyjx",
   /**
    * The layer within the vector tileset to use for querying
    */
-  sourceLayer: 'kecametan-786cmh',
+  sourceLayer: "kabupaten_gdf-0osmrh",
   /**
    * This sets the title in the sidebar and the <title> tag of the app
    */
-  title: 'Indonesian Election of 1954',
+  title: "The September 30 Movement: Politics and Population Change",
   /**
    * This sets the description in the sidebar
    */
   description:
-    'This map provides information on population change and political election results.',
+    'The 1957 Election was dominated by four political parties. The Islamic parties NU (Nahdlatul Ulama) and the MAS (Masyumi Party) along with the PKI (Communist Party of Indonesia) and PNI (Indonesian National Party). Following the September 30 Movement in 1965, members and sympathizers of the Communist Party were imprisoned or disappeared. For more information on this event and the methods used to calculate the population loss see <a href="https://www.jstor.org/stable/10.5728/indonesia.104.0027">(Chandra 2017)</a>. Funding for this research was provided by the Harry Frank Guggenheim Foundation.',
   /**
    * Data fields to chart from the source data
    */
-  fields: [
-    'POP_1961',
-    'POP_1971',
-    'POP_1981',
-  ],
+  fields: ["MAX_perc_N", "MAX_perc_P", "MAX_perc_1", "MAX_perc_M"],
   /**
    * Labels for the X Axis, one for each field
    */
-  labels: ['1961', '1971', '1981'],
+  labels: ["NU", "PKI", "PNI", "MAS"],
   /**
    * The name of the data field to pull the place name from for chart labeling ("Total Votes in placeNameField, placeAdminField")
    */
-  placeNameField: 'KECAMATAN',
+  placeNameField: "KAB_KOTA",
   /**
    * (_Optional_) The name of the administrative unit field to use in chart labeling ("Total Votes in placeNameField, placeAdminField")
    */
-  /*placeAdminField: 'state_abbrev',
-  /**
-   * This sets what type of summary math is used to calculate the initial chart, options are 'avg' or 'sum' (default)
-   * Use 'avg' for data that is a rate like turnout %, pizzas per capita or per sq mile
-   */
-  /*summaryType: 'avg',
-  /**
-   * Label for the graph line
-   */
-  dataSeriesLabel: 'Population',
+
+  dataSeriesLabel: "percent of vote ",
   /**
    * Basic implementation of zooming to a clicked feature
    */
@@ -60,33 +49,34 @@ const config = {
    * Color to highlight features on map on click
    * TODO: add parameter for fill color too?
    */
-  highlightColor: '#fff',
+  highlightColor: "#ff0000",
   /**
    * (_Optional_) Set this to 'bar' for a bar chart, default is line
    */
-  chartType: 'bar',
+  chartType: "bar",
   /**
    * The name of the vector source, leave as composite if using a studio style,
    * change if loading a tileset programmatically
    */
-  sourceId: 'composite',
+  sourceId: "composite",
 
   /**
    * (Experimental) Try to build a legend automatically from the studio style,
    *  only works with a basic [interpolate] expression ramp with stops */
   autoLegend: false,
   /** The number of decimal places to use when rounding values for the legend, defaults to 1 */
-  autoLegendDecimals: 1,
+  autoLegendDecimals: 2,
 
   /**
    * Legend colors and values, ignored if autoLegend is used. Delete both if no legend is needed.
    */
-  legendColors: ['#c200c2', '#a200a3', '#810184',],
-  legendValues: [25000, 50000, 100000,],
+  legendColors: ["#b57033 ", "#edce9a", "#9caab2", "#4d5860"],
+  legendValues: ["-16%", "-8%", "8%", "16%"],
+  /**
   /**
    * The name of your choropleth map layer in studio, used for building a legend
    */
-  studioLayerName: 'choropleth-fill',
+  studioLayerName: "choropleth-fill",
 };
 
 /********************************************************************************
@@ -97,25 +87,25 @@ const config = {
  */
 (updateText = () => {
   document.title = config.title;
-  document.getElementById('sidebar-title').textContent = config.title;
-  document.getElementById('sidebar-description').innerHTML = config.description;
+  document.getElementById("sidebar-title").textContent = config.title;
+  document.getElementById("sidebar-description").innerHTML = config.description;
 })();
 
 /**
  * We use C3 for charts, a layer on top of D3. For docs and examples: https://c3js.org/
  */
 const chart = c3.generate({
-  bindto: '#chart',
+  bindto: "#chart",
   data: {
     // TODO make the initial chart have as many points as the number of fields
-    columns: [['data', 0, 0, 0]],
+    columns: [["data", 0, 0, 0, 0]],
     names: { data: config.dataSeriesLabel },
     // To make a bar chart uncomment this line
-    type: config.chartType ? config.chartType : 'bar',
+    type: config.chartType ? config.chartType : "bar",
   },
   axis: {
     x: {
-      type: 'category',
+      type: "category",
       categories: config.labels,
     },
   },
@@ -125,7 +115,7 @@ const chart = c3.generate({
 });
 
 let summaryData = [];
-document.getElementById('resetButton').onclick = () => {
+document.getElementById("resetButton").onclick = () => {
   if (summaryData) {
     updateChartFromFeatures(summaryData);
     highlightFeature();
@@ -137,45 +127,45 @@ document.getElementById('resetButton').onclick = () => {
 // For tracking usage of our templates
 const transformRequest = (url, resourceType) => {
   var isMapboxRequest =
-    url.slice(8, 22) === 'api.mapbox.com' ||
-    url.slice(10, 26) === 'tiles.mapbox.com';
+    url.slice(8, 22) === "api.mapbox.com" ||
+    url.slice(10, 26) === "tiles.mapbox.com";
   return {
-    url: isMapboxRequest ? url.replace('?', '?pluginName=charts&') : url,
+    url: isMapboxRequest ? url.replace("?", "?pluginName=charts&") : url,
   };
 };
 mapboxgl.accessToken = config.accessToken;
 const map = new mapboxgl.Map({
-  container: 'map',
+  container: "map",
   style: config.mapStyle,
   // Change this if you want to zoom out further
-  minZoom: 2,
+  minZoom: 8.12,
   transformRequest,
 });
 
 let bbFull;
-map.once('idle', (idleEvent) => {
+map.once("idle", (idleEvent) => {
   bbFull = map.getBounds();
 
   buildLegend();
 
   /** Layer for onClick highlights, to change to a fill see this tutorial: https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/ */
   map.addLayer({
-    id: 'highlight',
-    type: 'line',
-    source: 'composite',
-    'source-layer': config.sourceLayer,
+    id: "highlight",
+    type: "line",
+    source: "composite",
+    "source-layer": config.sourceLayer,
     paint: {
-      'line-color': config.highlightColor,
-      'line-width': 2,
-      'line-opacity': [
-        'case',
-        ['boolean', ['feature-state', 'active'], false],
+      "line-color": config.highlightColor,
+      "line-width": 2,
+      "line-opacity": [
+        "case",
+        ["boolean", ["feature-state", "active"], false],
         0.7,
         0,
       ],
     },
   });
-  map.on('click', onMapClick);
+  map.on("click", onMapClick);
   /**
    * 'In contrast to Map#queryRenderedFeatures, this function returns all features matching the query parameters,
    * whether or not they are rendered by the current style (i.e. visible). The domain of the query includes all
@@ -193,7 +183,7 @@ map.once('idle', (idleEvent) => {
 const onMapClick = (e) => {
   const clickedFeature = map
     .queryRenderedFeatures(e.point)
-    .filter((item) => item.layer['source-layer'] === config.sourceLayer)[0];
+    .filter((item) => item.layer["source-layer"] === config.sourceLayer)[0];
   if (clickedFeature) {
     if (config.zoomToFeature) {
       const bb = turf.bbox(clickedFeature.geometry);
@@ -220,7 +210,7 @@ const processSourceFeatures = (features) => {
   );
 
   // Save the queried data for resetting later
-  if (config.summaryType === 'avg') {
+  if (config.summaryType === "avg") {
     summaryData = data.map((i) => i / uniqueFeatures.length);
   } else {
     summaryData = data;
@@ -262,7 +252,7 @@ const filterDuplicates = (features) => {
 
 const updateChartFromFeatures = (features) => {
   chart.load({
-    columns: [['data'].concat(features)],
+    columns: [["data"].concat(features)],
     names: { data: `${config.dataSeriesLabel}` },
   });
 };
@@ -279,7 +269,7 @@ const updateChartFromClick = (feature) => {
   }, []);
 
   chart.load({
-    columns: [['data'].concat(data)],
+    columns: [["data"].concat(data)],
     names: {
       // Update this to match data fields if you don't have the same data schema, it will look for `name` and `state_abbrev` fields
       data: config.placeAdminField
@@ -297,15 +287,15 @@ const updateChartFromClick = (feature) => {
  * Builds out a legend from the viz layer
  */
 const buildLegend = () => {
-  const legend = document.getElementById('legend');
-  const legendColors = document.getElementById('legend-colors');
-  const legendValues = document.getElementById('legend-values');
+  const legend = document.getElementById("legend");
+  const legendColors = document.getElementById("legend-colors");
+  const legendValues = document.getElementById("legend-values");
 
   if (config.autoLegend) {
-    legend.classList.add('block-ml');
+    legend.classList.add("block-ml");
     const style = map.getStyle();
     const layer = style.layers.find((i) => i.id === config.studioLayerName);
-    const fill = layer.paint['fill-color'];
+    const fill = layer.paint["fill-color"];
     // Remove the interpolate expression to get the stops
     const stops = fill.slice(3);
     stops.forEach((stop, index) => {
@@ -313,7 +303,7 @@ const buildLegend = () => {
       if (index % 2 === 0) {
         // Default to 1 decimal unless specified in config
         const valueEl = `<div class='col align-center'>${stop.toFixed(
-          typeof config.autoLegendDecimals !== 'undefined'
+          typeof config.autoLegendDecimals !== "undefined"
             ? config.autoLegendDecimals
             : 1
         )}</div>`;
@@ -325,7 +315,7 @@ const buildLegend = () => {
       }
     });
   } else if (config.legendValues) {
-    legend.classList.add('block-ml');
+    legend.classList.add("block-ml");
     config.legendValues.forEach((stop, idx) => {
       const key = `<div class='col h12' style='background-color:${config.legendColors[idx]}'></div>`;
       const value = `<div class='col align-center'>${stop}</div>`;

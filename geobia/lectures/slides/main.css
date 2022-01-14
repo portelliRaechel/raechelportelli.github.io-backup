@@ -5,3 +5,10 @@ h1 {
 p {
   font-family: "Staatliches", cursive;
 }
+
+.container {
+  display: flex;
+}
+.col {
+  flex: 1;
+}

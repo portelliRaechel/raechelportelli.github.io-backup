@@ -23,12 +23,12 @@ section.has-light-background h6 {
  *********************************************/
 :root {
   --r-background-color: #191919;
-  --r-main-font: "Abril Fatface", cursive;
+  --r-main-font:  serif;
   --r-main-font-size: 42px;
   --r-main-color: #fff;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
-  --r-heading-font: "Abril Fatface", cursive;
+  --r-heading-font: "Abril Fatface", serif;
   --r-heading-color: #fff;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
@@ -124,6 +124,10 @@ section.has-light-background h6 {
 .reveal p {
   margin: var(--r-block-margin) 0;
   line-height: 1.3;
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+
+.reveal li {
   font-family: "Be Vietnam Pro", sans-serif;
 }
 

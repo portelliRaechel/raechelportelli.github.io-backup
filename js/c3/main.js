@@ -1,7 +1,7 @@
 //main.js for creating charts
 
 var chart = c3.generate({
-  bindto: "#chart", //the chart id in your html
+  bindto: "#chart",
   data: {
     columns: [
       ["data1", 30, 200, 100, 400, 150, 250],

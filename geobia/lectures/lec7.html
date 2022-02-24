@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>GEO 826</title>
+		<meta charset="utf-8">
+		<!-- Google Fonts-->
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+		</style>
+			<link rel="stylesheet" href="main.css">
+
+			</style>
+		<!--reveal-->
+		<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=yes">
+		<link rel="stylesheet" href="../../../dist/reveal.css">
+		<link rel="stylesheet" href="../../../dist/theme/serif.css" id="theme">
+		<link rel="stylesheet" href="../../../plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+	<div class="reveal">
+		<div class="slides" style="height: 100%;">
+
+			<section>
+				<h1 class="r-fit-text">Classification</h1>
+			</section>
+
+			<section>	
+				"				<h2 class=""r-fit-text"">Image Analysis Goals (Radoux 2017)</h2>"	
+			<ul><li>	Delineation	</li>
+			<li>	Identification	</li>
+			</ul>	Wall-to-Wall Classification	</li>
+				</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">What is Classification?</h2>"	
+			<ul><li>	Classification is the process of arranging entities into kinds of things (Classes)	</li>
+			</ul>		
+				</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Why classification?</h2>"	
+			<ul><li>	Identify an individual entity	</li>
+			<li>	Understand relationships between entities	</li>
+			</ul>	Understand the meaning of the object	</li>
+				</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Why classification?</h2>"	
+			<ul><li>	Classification is used widely in the sciences to help us better understand life	</li>
+			<li>	Land Cover and Land Use Classification  - USGS	</li>
+			<li>	Climate System - Koppen	</li>
+			<li>	Phylogenetic Tree - Hitchcock and others	</li>
+			<li>	Even non-sciences used classification	</li>
+			<li>	North American Industrial Classification System	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Class Separation</h2>"	
+			<ul><li>	Spectral:  deifference in their colors (Grass vs. Water)	</li>
+			<li>	Radiometric: difference in their brightness (Water spectral reflectance)	</li>
+			<li>	Spatial: different spectral and radiometric properties are resolution dependent (mixed pixels)	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Quick review of terms</h2>"	
+			<ul><li>	Explanatory Variables ( Independent Variables): features of the objects (gray level values)	</li>
+			<li>	Dependent Variables (outcomes): the class or identification (Land Cover Class: Rural)	</li>
+			<li>	Parameter: a configuration variable intrinsic to the model (regression coefficients)	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Parametric vs. Non-parametric methods</h2>"	
+			<ul><li>	Parametric: assumes normal distribution and mean and standard deviation are representative	</li>
+			<li>	Non-parametric: no normality assumption	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Benefits: Parametric vs. Non-parametric methods</h2>"	
+				<table>	
+				<tr><th>Parametric	</th>
+				<th>Non-Parametric	</th></tr>
+				<tr><th>Simpler	</th>
+				<th>More Flexible	</th></tr>
+				<tr><th>Faster	</th>
+				<th>More Power	</th></tr>
+				<tr><th>Less Training Data 	</th>
+				<th>High Performance	</th></tr>
+				</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Parametric vs. Non-Parametric Methods</h2>"	
+			<ul><li>		
+			<li>	Linear Support Vector Machines (P)	</li>
+			<li>	Linear Discriminant Analysis (P)	</li>
+			<li>	Logistic Regression (P)	</li>
+			<li>	Simple Neural Network (P)	</li>
+			<li>	K-NN (N)	</li>
+			<li>	Decision Trees (N)	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Bias Variance & Tradeoff</h2>"	
+			<ul><li>	Bias: difference from the estimate and actual value (100%-Actual Accuracy)	</li>
+				<li>Low Bias - predictions are correct or close to correct</li>	</li>
+				<li>High Bias - your predictions are bad</li>	</li>
+			<li>	Variance: difference in bias error from one sample to another	</li>
+				<li>Low Variance - predictions are consistent</li>	</li>
+				<li>High Variance - predictions are inconsistent</li>	</li>
+			</ul>		
+				</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Classification System</h2>"	
+			<ul><li>	Reliable (concensus)	</li>
+			<li>	Mutually Exlusive 	</li>
+			<li>	Comprehensiveness	</li>
+			<li>	Stability	</li>
+			<li>	User Validity & Usefulness	</li>
+			<li>	Flexibility	</li>
+			<li>	Evaluatability	
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Land Cover Classification Systems</h2>"	
+				<img src = "">	
+				</section>	
+					
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Classification Approaches</h2>"	
+			<ul><li>	Per-pixel {classical methods}	</li>
+			<li>	Sub-pixel {fuzzy}	</li>
+			<li>	Perfield {object-based}	</li>
+			<li>	Contextual-based	</li>
+			<li>	Knowledge-based	</li>
+			<li>	Combinations	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Supervised v. Unsupervised Classification</h2>"	
+			<ul><li>	Supervised Classification: algorithms learn to predict the output from the input data	</li>
+			<li>	Unsupervised Classification: algorithms learn from the inherent structure from the input data.	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Supervised Classification</h2>"	
+			<ul><li>	Use of known class properties to separate between classes (typically gray level values)	</li>
+			<li>	Known classes are represented by training data	</li>
+			<li>	Cover the variation of land cover within the class 	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Common Supervised Classification Methods</h2>"	
+			<ul><li>	Maximum Likelihood	</li>
+			<li>	Minimum Distance	</li>
+			<li>	Mahalanobis Distance	</li>
+			<li>	Linear Discriminant Analysis	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Unsupervised Classification</h2>"	
+			<ul><li>	Sometimes called clustering in CV literature	</li>
+			<li>	Assumption: pixels that are of the same cover type should be similar in the data space	</li>
+			<li>	Inter-class homogeneity	</li>
+			<li>	Intra-class heterogeneity	</li>
+			<li>	Control of number of clusters	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Common  Unsupervised Classification Methods</h2>"	
+			<ul><li>	ISO DATA	</li>
+			<li>	K-means	</li>
+			<li>	Hierarchical 	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Feature Selection </h2>"	
+			<ul><li>	process of reducing the number of features (variables) used to identify the intended targets	
+			<li>	Examples	</li>
+			<li>	Principal Component Analysis	</li>
+			<li>	Discriminant Analysis	</li>
+			<li>	Feature-Space Plots	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Benefits of Feature Selection</h2>"	
+			<ul><li>	SImplify the models (Occam's Razor)	</li>
+			<li>	Shorter training time 	</li>
+			<li>	Reduce variance (overfitting)	</li>
+			<li>	Reduces dimensionality	</li>
+			<li>	Dimensionality Reduction - reduction of feature space using project or selection approach	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Linear Projection Methods </h2>"	
+			<ul><li>	Determine the best axes to separate data points in a new subspace	</li>
+			<li>	Principal Components Analysis - orthogonal (maximizes covariance)	</li>
+			<li>	Tasseled Cap Transformation - special case of PCA (greenness, brightness, wetness)	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Graphical Feature Selection</h2>"	
+			<p>	Data Considerations	</p>
+			<ul><li>	Scale	</li>
+			<li>	Image resolution	</li>
+			<li>	User needs	</li>
+			<li>	Condition (i.e. atmospheric interference)	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Maximum Likelihood </h2>"	</li>
+			<ul><li>	Train a discriminant function for each class and assess pixel’s likeness to the function	</li>
+			<li>	Minimum-Distance-to-Means: Clusters that are identified by the user	</li>
+			<li>	A pixel is assigned to the class based on statistical probability. 	</li>
+			<li>	Based on statistics (mean; covariance) A probability function is calculated from the inputs for classes established from training sites. Each pixel is then judged as to the class to which it most probably belong.	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Key Benefits of MLC</h2>"	
+			<ul><li>	robustness and simplicity	</li>
+			<li>	errors in the results if the number of sample data is not sufficient	</li>
+			<li>	errors if non-Gaussian distribution 	</li>
+			<li>	errors due to poor separability of classes	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">K-NN</h2>"	
+			<ul><li>	input consists of the k closest training examples	</li>
+			<li>	object being assigned to the class most common among its k nearest neighbors	</li>
+			<li>	neighbors are taken from a set of objects for which the class (for k-NN classification) is known	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Support Vector Machine (SVM)</h2>"	
+			<ul><li>	SVM takes a set of input data and predicts	</li>
+			<li>	Given a set of training examples an SVM training algorithm builds a model that assigns new examples into one category or the other. 	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Parallelepiped</h2>"	
+			<ul><li>	 uses a simple decision rule to classify multispectral data	</li>
+			<li>	dimensions of the parallelepiped decision boundaries are defined based upon a standard deviation threshold from the mean of each selected class	</li>
+			</ul>	</section>	
+					
+				<section>	
+				<h2 class="r-fit-text">Classification Trees </h2>	
+			<ul><li>	data are partitioned along the predictor axes into subsets with homogeneous values of the dependent variable	</li>
+			<li>	iteratively split X into intervals that are as homogeneous as possible with respect to Y	</li>
+			<li>	branch: splitting of the data based on variable above or below the splitting value	</li>
+			<li>	node: subset of homogenous data	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Unsupervised Classification: Distance Metrics</h2>"	
+			<ul><li>	Euclidean Distance: the square root of the sum of the squared differences between the two vectors	</li>
+			<li>	Manhattan Distance: the sum of the absolute differences between the two vectors	</li>
+			<li>	Hamming Distance: Distance between two binary vectors	</li>
+			<li>	Minkowski Distance: generalization of Euclidean or Manhattan distances 	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">K-Means Clustering vs. ISODATA</h2>"	
+			<ul><li>	K means method will produce exactly k different clusters of greatest possible distinction	</li>
+			<li>	Parameters: number of categories	</li>
+			<li>	ISODATA classification uses class means distributed equally across data space and then adds the remaining pixels to groups based on their minimum distance	</li>
+			<li>	Parameters: starting number of clusters	</li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Mixed Pixel Problem</h2>"	
+			<ul><li>	Mixed pixels occur when a sensor’s IFOV covers more than one land cover feature 	<li>
+			<li>	Depends on the spatial resolution of sensors and the scale of features 	<li>
+			<li>	Solution- Spectral Mixture Analysis	<li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Spectral Mixture Analysis</h2>"	
+			<ul><li>	Pixel Signatures is decomposed into component features	<li>
+			<li>	Features spectral signatures are derived from libraries or field data	<li>
+			<li>	Assumes that the variation in an image is a mixture of a limited number of features 	<li>
+			<li>	Estimates of proportion of each pure feature in a pixel	<li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Linear mixture models </h2>"	
+			<ul><li>	assuming a linear mixture of pure features 	<li>
+			<li>	Endmembers - the pure reference signatures 	<li>
+			<li>	Weight - the proportion of the area occupied by an endmember 	<li>
+			<li>	Output - fraction image for each endmember showing the fraction occupied by an endmember in a pixel	<li>
+			<li>	sum of fractions of all endmembers in a pixel must equal 1 	<li>
+			<li>	The DN of a pixel is the sum of the DNs of endmembers weighted by their area fraction	<li>
+			</ul>	</section>	
+					
+				<section>	
+				"				<h2 class=""r-fit-text"">Fuzzy Classification </h2>"	
+			<p>	Best Classification Result	
+			<ul><li>	Identifies the classification that has the highest assignment value 	<li>
+			<li>	Values are based on fuzzy membership 	<li>
+			<li>	Classification Stability	<li>
+			<li>	Differences in degrees of membership between best and second best class assignment	<li>
+			</ul>	</section>	
+					
+			
+            
+			<section>
+				<h2>Printing Instructions</h2>
+				<p><a href="https://revealjs.com/pdf-export/">Printing Instructions</a></p>
+				
+			</section>
+	</div>
+	</div>
+
+
+	<script src="../../../dist/reveal.js"></script>
+    <script>
+				Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1
+			});
+	</script>
+</body>
+</html>

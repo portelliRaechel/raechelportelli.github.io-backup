@@ -141,6 +141,18 @@
 				</section>
 
 				<section>
+					<h2 class="r-fit-text">Sampling</h2><br>
+					<ul>
+						<li>Random - randomly placed observations</li>
+						<li>Stratified - Minimum number of observations randomized across classes</li>
+						<li>Systematic - Samples are placed at equal intervals across the site</li>
+						<li>Systematic Non-Aligned - Systematic grid is used to divide the site and random samples are taken within the grid cells</li>
+						<li>Cluster - centroids are randomly placed across the site and nearby observations</li>
+						<li>List-Based - choose a subset of the elements (the sample) from a listing of all elements (the sampling frame) using a specific selection process</li>
+					</ul>
+				</section>
+
+				<section>
 					<h2 class="r-fit-text">Sampling Polygons</h2>
 					<ul>
 						<li>If using a set of points across the map, the area of the polygons affects the probability it is chosen for sampling</li>
@@ -201,6 +213,17 @@
 		</section>
 
 		<section>
+			<h2 class="r-fit-text">Sampling Design</h2><br>
+			<img src="../imgs/entitydetectionSamplingDesign.JPG">
+			<ul>
+				<li>n - sample size</li>
+				<li>z - zscore for intended Confidence Interval</li>
+				<li>p - expected accuracy </li>
+				<li>d - confidence interval</li>
+			</ul>
+		</section>
+
+		<section>
 			<h2 class="r-fit-text">Accuracy Assessment - Entity Detection</h2><br>
 			<ul>
 				<li>User's accuracy - probability that a value predicted to be in a certain class really is that class</li>
@@ -222,18 +245,6 @@
 </section>
 
 <section>
-	<section>
-		<h2 class="r-fit-text">Sampling</h2><br>
-		<ul>
-			<li>Random - randomly placed observations</li>
-			<li>Stratified - Minimum number of observations randomized across classes</li>
-			<li>Systematic - Samples are placed at equal intervals across the site</li>
-			<li>Systematic Non-Aligned - Systematic grid is used to divide the site and random samples are taken within the grid cells</li>
-			<li>Cluster - centroids are randomly placed across the site and nearby observations</li>
-			<li>List-Based - choose a subset of the elements (the sample) from a listing of all elements (the sampling frame) using a specific selection process</li>
-		</ul>
-	</section>
-
 	<section>
 			<h2 class="r-fit-text">Sampling</h2><br>
 			<ul>
@@ -284,6 +295,139 @@
 		<h2 class="r-fit-text">The Confusion/Error Matrix</h2><br>
 		<img src="../imgs/confMatrix.jpg">
 </section>
+</section>
+</section>
+
+<section></section>
+<section>
+	<h2 class="r-fit-text">Thinking about Objects (Radoux, Olafsson, et al.)</h2><br>
+<ul>Advantage of Object-Based Predictor of Overall Accuracy 
+	<li> For a given Confidence Interval is requires fewer sampling units</li>	
+	<li> Geolocation errors do not influence object-based thematic accuracy </li>
+	<li>Response design is more complex in object-based accuracy assessment</li>
+	<li>Larger likelihood to reach the minimum sample size for each class with object-based sampling</li>
+	</ul>
+</section>
+
+<section>
+	<h2 class="r-fit-text">Sampling Scheme</h2><br>
+	<p>List-based selection without replacement.</p>
+	<p>Removes the impact of area that leads to bias in a random spatial point pattern.</p>
+</section>
+
+<section>
+	<img src="../imgs/TBL_SampleEstimate.JPG">
+	</section>
+
+<section>
+	<h2 class="r-fit-text">Overall Accuracy</h2><br>
+	<ul>
+	<li>S = area of the ith polygon/object</li>
+	<li>C = binary variable indicating Correct(1) or Incorrect(0) classification</li>
+</ul>
+</section>
+
+<section>
+	<h2 class="r-fit-text">Overall Accuracy</h2><br>
+	<ul>
+		<li>Cs are independent and follow Bernouli (discrete) distribution</li>
+		<li>Cs ans Ss are mutually independent </li>
+		<li>Crisp Classification</li>
+	</ul>
+	<img src="../imgs/overallAccuracyCS.JPG">
+</section>
+
+<section>
+	<h2 class="r-fit-text">GEOBIA Accuracy Overview</h2><br>
+	<img src="../imgs/AccuracyEquationsGEOBIA.JPG">
+</section>
+
+<section>
+	<h2 class="r-fit-text">Notation</h2><br>
+	<ul>
+		<li>N - total number of polygons on map</li>
+		<li>n - sampled polygons</li>
+		<li>S area of the ith polygon</li>
+		<li>alpha and beta are actual and predicted classes ( 1- correct, 0- incorrect)</li>
+		<li>p - estimate of probility to belong in class j</li>
+		<li>pb - estimate of classification accuracy </li>
+		<li>Omega - set pf all possible classes on the map</li>
+	</ul>
+</section>
+
+<section>
+	<h2 class="r-fit-text">Object vs. Point-based</h2><br>
+	<ul>
+		<li>Main difference is the inclusion of polygon size (S)</li>
+		<li>Second term of the numerators, have more influence when the number of polygons are larger</li>
+	</ul>
+</section>
+</section>
+
+<section>
+	<h2 class="r-fit-text">STEP Process (Lizarazo)</h2><br>
+	<ul>
+		<li>Shape</li>
+		<li>Thematic</li>
+		<li>Edge</li>
+		<li>Position</li>
+	</ul>
+</section>
+
+<section>
+	<h2 class="r-fit-text">Workflow</h2><br>
+	<ul>
+		<li>Random selection of reference objects</li>
+	<li>Identify corresponding classification objects</li>
+	<li>Pair to classification objects</li>
+	<li>Calculate Similarity</li>
+	</ul>
+</section>
+
+<section>
+	<h2 class="r-fit-text">Shape Similarity</h2><br>
+	<p>Uses the Normalized Perimeter Index- relationship between the Equal Area Circle and the shape perimeter (Match = 1)</p>
+</section>
+
+<section>
+	<h2 class="r-fit-text">Thematic Similarity</h2><br>
+	<p>Relates the percentage of the reference object with the classification object (match = 1)</p>
+</section>
+
+<section>
+	<h2 class="r-fit-text">Edge Similarity</h2><br>
+	<li>Boundary is a set of line segments representing a limit of an object</li>
+		<li>Considers both interior and exterior boundaries</li>
+		<li>Edges have some inherent width (usually fuzzy) (matching = 1)
+		</li>
+</section>
+
+<section><h2 class="r-fit-text">Positional Similarity</h2><br>
+	<p>comparison of the centroids of both reference and classification objects</p>
+</section>
+
+<section>
+	<section><h2 class="r-fit-text">Overview</h2><br>
+	<img src="../imgs/STEPProcess.png">
+	<p>The various dimensions of similarity are weighted based on the object's area and the class area.</p>
+</section>
+
+<section>
+	<section><h2 class="r-fit-text">Class-Aggregated Confusion Matrix</h2><br>
+		<img src = "../imgs/STEP_ConfusionMatrixExample.JPG">
+		<p>Values in each cell represent, in Z-order, shape similarity, theme similarity, edge
+			similarity, and position similarity, respectively.</p>
+		<p>Area
+			weighted error matrix, in which the individual cells reflect the weighted area of the
+			reference units that fall into that cell</p>
+</section>
+
+<section>
+	<h2 class="r-fit-text">Weighted Thematic Error Matrix</h2><br>
+	<img src="../imgs/STEP_ThematicConfusionMatrixExample.JPG">
+	<p>value in each cell represents the
+		weighted overlapping area, aggregated by classified thematic category, between reference objects
+		and the corresponding classified objects</p>
 </section>
 </section>
 

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>GEO 826</title>
+		<meta charset="utf-8">
+		<!-- Google Fonts-->
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+		</style>
+			<link rel="stylesheet" href="main.css">
+
+			</style>
+		<!--reveal-->
+		<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=yes">
+		<link rel="stylesheet" href="../../../dist/reveal.css">
+		<link rel="stylesheet" href="../../../dist/theme/serif.css" id="theme">
+		<link rel="stylesheet" href="../../../plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+	<div class="reveal">
+		<div class="slides" style="height: 100%;">
+
+<section>
+<h1 class="r-fit-text">Texture Metrics</h1>
+</section>
+				
+<section>					
+<h2 class="r-fit-text">	Texture	</h2><br>			
+<ul>	<li>		Texture a function of spatial variation of the brightness intensity of the pixels. 	</li>	
+	<li>		Spatial resolution is important when identifying textural signatures.	</li>	
+	<li>		The significance of texture decreases with spatial resolution.	</li>	</ul>
+	<li>		There are quite a few methods of quantifying texture in digital imagery. Because texture has so many different dimensions. ? no single method of texture representation that is adequate for a variety of textures.		
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	1st Order v. Second Order 	</h2><br>			
+<ul>	<li>	1st order: 	"operate on the counts, orÿoccurrences, of the different digital number (DN) values within a moving window/kernel"	</li>	
+	<li>	2nd order: 	ÿanalyze the relationship between pixel pairs.	</li>	</ul>
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	Approaches	</h2><br>			
+<ul>	<li>		Structured Approaches	</li>	
+	<li>		Statistical Approaches	</li>	
+	<li>		Modeling Approaches	</li>	</ul>
+			<img src=""../lectures/imgs/texture_comparison.jpg">		
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	Basic Statistical Approaches	</h2><br>			
+<ul>	<li>		Range - difference between maximum and minimum intensity values minimum intensity values within a window	</li>	
+	<li>		Variance -  the sum of the squares of the differences between the intensity of the central pixel and its neighbours	</li>	
+</section>					
+					
+					
+<section>					
+<h2 class="r-fit-text">	Basics	</h2><br>			
+<ul>	
+	<li>		Texture consists of texture primitives called textels	</li>	
+	<li>		If texels are small and tonal differences between texels are large a fine texture results	</li>	
+	<li>		"If texels are large and consist of several pixels, a coarse texture results"	</li>	</ul>
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM)	</h2><br>			
+<ul>	<li>		"is a marix that is defined overany imagery to be the distribution of co-occurring pixel values (grayscale values, or colors) at a given offset"	</li>	
+	<li>		computes how often pairs of pixels with a specific value and offset occur in the image	</li>	</ul>
+			<img src =""../lectures/imgs/GLCM_example.png">		
+</section>					
+					
+<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM)	</h2><br>			
+<img src = ""../lectures/imgs/glcm_exampleNOTRS.png">
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	<a href= ""https://www.l3harrisgeospatial.com/docs/backgroundtexturemetrics.html">Numeric Features of GLCM</a>	</h2><br>			
+<ul>	<li>		Computed from the cooccurrence matrix that can be used to represent the texture more compactly.	</li>	
+	<li>		"Maximum Probability - largest entry in the matrix, and corresponds to the strongest response"	</li>	
+	<li>		Contrast - measures the local variations in the gray-level co-occurrence matrix	</li>	
+	<li>		Correlation - measures the joint probability occurrence of the specified pixel pairs	</li>	
+	<li>		Energy (Second Moment) - provides the sum of squared elements	</li>	
+	<li>		Homogeneity - measures the closeness of the distribution of elements	</li>	
+	<li>		"Entropy - measure of image information content, which is interpreted as the average uncertainty of information source"	</li>	
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	Fractals	</h2><br>			
+<ul>	<li>		Fractals are infinitely complex patterns that are self-similar across different scales	</li>	
+	<li>		Fractal geometry can be used to discriminate between textures	</li>	
+	<li>		Fractal models represent exponential changes in measured quantities with changes in length scale	</li>	</ul>
+			<img src = ""../lectures/imgs/FractalEQ.png>		
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	"Fractals (Lam et al, 2002)"	</h2><br>			
+<ul>	<center>		<img src = ""../lectures/imgs/fractalsfc.gif">	</center>	
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	Haralick Texture	</h2><br>			
+		<p>	"The Haralick texture features are functions of the normalized GLCM, where different aspects of the gray level distribution in the ROI are represented."	</p>	
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	Parameters	</h2><br>			
+<ul>		<li>	X Radius - window radius in x direction	</li>	
+		<li>	Y Radius - window radius in y direction	</li>	
+		<li>	X Offset - x of D vector	</li>	
+		<li>	Y Offset - y of D vector	</li>	
+		<li>	Image Min/Max - minimum and maximum intensity values	</li>	
+		<li>	Histogram - number of bins	</li>	</ul>
+</section>					
+					
+<section>					
+<h2 class="r-fit-text">	Example from OTB Haralick</h2><br>				
+<ul>					
+		<img src =""../lectures/imgs/texture_comparison.png">
+</section>					
+
+
+	<script src="../../../dist/reveal.js"></script>
+    <script>
+				Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1
+			});
+	</script>
+</body>
+</html>

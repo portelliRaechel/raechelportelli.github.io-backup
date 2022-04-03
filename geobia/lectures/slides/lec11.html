@@ -29,7 +29,8 @@
 				
 <section>					
 <h2 class="r-fit-text">	Texture	</h2><br>			
-<ul>	<li>		Texture a function of spatial variation of the brightness intensity of the pixels. 	</li>	
+<ul>	
+	<li>		Texture a function of spatial variation of the brightness intensity of the pixels. 	</li>	
 	<li>		Spatial resolution is important when identifying textural signatures.	</li>	
 	<li>		The significance of texture decreases with spatial resolution.	</li>	</ul>
 	<li>		There are quite a few methods of quantifying texture in digital imagery. Because texture has so many different dimensions. ? no single method of texture representation that is adequate for a variety of textures.		
@@ -37,7 +38,8 @@
 					
 <section>					
 <h2 class="r-fit-text">	1st Order v. Second Order 	</h2><br>			
-<ul>	<li>	1st order: 	"operate on the counts, orÿoccurrences, of the different digital number (DN) values within a moving window/kernel"	</li>	
+<ul>	
+	<li>	1st order: 	"operate on the counts, orÿoccurrences, of the different digital number (DN) values within a moving window/kernel"	</li>	
 	<li>	2nd order: 	ÿanalyze the relationship between pixel pairs.	</li>	</ul>
 </section>					
 					
@@ -46,13 +48,14 @@
 <ul>	<li>		Structured Approaches	</li>	
 	<li>		Statistical Approaches	</li>	
 	<li>		Modeling Approaches	</li>	</ul>
-			<img src=""../lectures/imgs/texture_comparison.jpg">		
+			<img src="../lectures/imgs/texture_comparison.jpg">		
 </section>					
 					
 <section>					
 <h2 class="r-fit-text">	Basic Statistical Approaches	</h2><br>			
-<ul>	<li>		Range - difference between maximum and minimum intensity values minimum intensity values within a window	</li>	
-	<li>		Variance -  the sum of the squares of the differences between the intensity of the central pixel and its neighbours	</li>	
+<ul>	
+	<li>		Range - difference between maximum and minimum intensity values minimum intensity values within a window	</li>	
+	<li>		Variance -  the sum of the squares of the differences between the intensity of the central pixel and its neighbours	</li>	</ul>
 </section>					
 					
 					
@@ -65,38 +68,41 @@
 </section>					
 					
 <section>					
-<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM)	</h2><br>			
+<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM1)	</h2><br>			
 <ul>	<li>		"is a marix that is defined overany imagery to be the distribution of co-occurring pixel values (grayscale values, or colors) at a given offset"	</li>	
 	<li>		computes how often pairs of pixels with a specific value and offset occur in the image	</li>	</ul>
-			<img src =""../lectures/imgs/GLCM_example.png">		
+			<img src ="../lectures/imgs/GLCM_example.png">		
 </section>					
 					
-<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM)	</h2><br>			
-<img src = ""../lectures/imgs/glcm_exampleNOTRS.png">
+<section>
+<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM2)	</h2><br>			
+<img src = "../lectures/imgs/glcm_exampleNOTRS.png">
 </section>					
 					
 <section>					
-<h2 class="r-fit-text">	<a href= ""https://www.l3harrisgeospatial.com/docs/backgroundtexturemetrics.html">Numeric Features of GLCM</a>	</h2><br>			
-<ul>	<li>		Computed from the cooccurrence matrix that can be used to represent the texture more compactly.	</li>	
+<h2 class="r-fit-text">	<a href= "https://www.l3harrisgeospatial.com/docs/backgroundtexturemetrics.html">Numeric Features of GLCM</a></h2><br>			
+<ul>	
+	<li>		Computed from the cooccurrence matrix that can be used to represent the texture more compactly.	</li>	
 	<li>		"Maximum Probability - largest entry in the matrix, and corresponds to the strongest response"	</li>	
 	<li>		Contrast - measures the local variations in the gray-level co-occurrence matrix	</li>	
 	<li>		Correlation - measures the joint probability occurrence of the specified pixel pairs	</li>	
 	<li>		Energy (Second Moment) - provides the sum of squared elements	</li>	
 	<li>		Homogeneity - measures the closeness of the distribution of elements	</li>	
-	<li>		"Entropy - measure of image information content, which is interpreted as the average uncertainty of information source"	</li>	
+	<li>		"Entropy - measure of image information content, which is interpreted as the average uncertainty of information source"	</li>	</ul>
 </section>					
 					
 <section>					
 <h2 class="r-fit-text">	Fractals	</h2><br>			
-<ul>	<li>		Fractals are infinitely complex patterns that are self-similar across different scales	</li>	
+<ul>	
+	<li>		Fractals are infinitely complex patterns that are self-similar across different scales	</li>	
 	<li>		Fractal geometry can be used to discriminate between textures	</li>	
 	<li>		Fractal models represent exponential changes in measured quantities with changes in length scale	</li>	</ul>
-			<img src = ""../lectures/imgs/FractalEQ.png>		
+			<img src = "../lectures/imgs/FractalEQ.png>		
 </section>					
 					
 <section>					
 <h2 class="r-fit-text">	"Fractals (Lam et al, 2002)"	</h2><br>			
-<ul>	<center>		<img src = ""../lectures/imgs/fractalsfc.gif">	</center>	
+<ul>	<center>		<img src = "../lectures/imgs/fractalsfc.gif">	</center>	
 </section>					
 					
 <section>					
@@ -117,7 +123,7 @@
 <section>					
 <h2 class="r-fit-text">	Example from OTB Haralick</h2><br>				
 <ul>					
-		<img src =""../lectures/imgs/texture_comparison.png">
+		<img src ="../lectures/imgs/texture_comparison.png">
 </section>					
 
 

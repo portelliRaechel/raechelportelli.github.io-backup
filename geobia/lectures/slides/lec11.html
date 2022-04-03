@@ -48,14 +48,16 @@
 <ul>	<li>		Structured Approaches	</li>	
 	<li>		Statistical Approaches	</li>	
 	<li>		Modeling Approaches	</li>	</ul>
-			<img src="../lectures/imgs/texture_comparison.jpg">		
+			<img src="../imgs/texture_comparison.jpg">		
 </section>					
 					
 <section>					
 <h2 class="r-fit-text">	Basic Statistical Approaches	</h2><br>			
 <ul>	
 	<li>		Range - difference between maximum and minimum intensity values minimum intensity values within a window	</li>	
-	<li>		Variance -  the sum of the squares of the differences between the intensity of the central pixel and its neighbours	</li>	</ul>
+	<li>		Variance -  the sum of the squares of the differences between the intensity of the central pixel and its neighbours	</li>	
+</ul>
+<img src="../imgs/MovingWindows.png">
 </section>					
 					
 					
@@ -64,19 +66,26 @@
 <ul>	
 	<li>		Texture consists of texture primitives called textels	</li>	
 	<li>		If texels are small and tonal differences between texels are large a fine texture results	</li>	
-	<li>		"If texels are large and consist of several pixels, a coarse texture results"	</li>	</ul>
+	<li>		"If texels are large and consist of several pixels, a coarse texture results"	</li>	
+</ul>
 </section>					
 					
 <section>					
-<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM1)	</h2><br>			
-<ul>	<li>		"is a marix that is defined overany imagery to be the distribution of co-occurring pixel values (grayscale values, or colors) at a given offset"	</li>	
-	<li>		computes how often pairs of pixels with a specific value and offset occur in the image	</li>	</ul>
-			<img src ="../lectures/imgs/GLCM_example.png">		
+<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM)	</h2><br>			
+<ul>	
+	<li>		"is a marix that is defined overany imagery to be the distribution of co-occurring pixel values (grayscale values, or colors) at a given offset"	</li>	
+	<li>		computes how often pairs of pixels with a specific value and offset occur in the image	</li>	
+	<li> See: Haralick et al. 1973</li>
+</ul>
+</section>
+
+<section>
+			<img src ="../imgs/GLCM_example.png"><img src = "../imgs/GLCMparameters.png" height="25%" width="25%">	
 </section>					
 					
 <section>
-<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM2)	</h2><br>			
-<img src = "../lectures/imgs/glcm_exampleNOTRS.png">
+<h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM)	</h2><br>			
+<img src = "../imgs/glcm_exampleNOTRS.png">
 </section>					
 					
 <section>					
@@ -96,15 +105,17 @@
 <ul>	
 	<li>		Fractals are infinitely complex patterns that are self-similar across different scales	</li>	
 	<li>		Fractal geometry can be used to discriminate between textures	</li>	
-	<li>		Fractal models represent exponential changes in measured quantities with changes in length scale	</li>	</ul>
-			<img src = "../lectures/imgs/FractalEQ.png>		
+	<li>		Fractal models represent exponential changes in measured quantities with changes in length scale	</li>	
+	<li>		See Mandelbrot (1975)</li>
+</ul>
+			<img src = "../imgs/FractalEQ.png">		
 </section>					
-					
-<section>					
-<h2 class="r-fit-text">	"Fractals (Lam et al, 2002)"	</h2><br>			
-<ul>	<center>		<img src = "../lectures/imgs/fractalsfc.gif">	</center>	
-</section>					
-					
+
+<section>
+	<h2 class="r-fit-text">	Fractals	</h2><br>
+	<img src = "../imgs/Wiki_df_figure.png" height="25%" width="25%">
+</section>
+								
 <section>					
 <h2 class="r-fit-text">	Haralick Texture	</h2><br>			
 		<p>	"The Haralick texture features are functions of the normalized GLCM, where different aspects of the gray level distribution in the ROI are represented."	</p>	
@@ -123,7 +134,7 @@
 <section>					
 <h2 class="r-fit-text">	Example from OTB Haralick</h2><br>				
 <ul>					
-		<img src ="../lectures/imgs/texture_comparison.png">
+		<img src ="../imgs/texture_comparison.png">
 </section>					
 
 

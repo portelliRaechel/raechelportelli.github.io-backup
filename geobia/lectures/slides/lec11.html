@@ -45,8 +45,10 @@
 					
 <section>					
 <h2 class="r-fit-text">	Approaches	</h2><br>			
-<ul>	<li>		Structured Approaches	</li>	
+<ul>	
+	<li>		Structured Approaches	</li>	
 	<li>		Statistical Approaches	</li>	
+	<li> Filter Approaches</li>
 	<li>		Modeling Approaches	</li>	</ul>
 			<img src="../imgs/texture_comparison.jpg">		
 </section>					
@@ -68,13 +70,17 @@
 	<li>		If texels are small and tonal differences between texels are large a fine texture results	</li>	
 	<li>		"If texels are large and consist of several pixels, a coarse texture results"	</li>	
 </ul>
-</section>					
+</section>			
+
+
+
 					
 <section>					
 <h2 class="r-fit-text">	Grey Level Co-Occurance (GLCM)	</h2><br>			
 <ul>	
-	<li>		"is a marix that is defined overany imagery to be the distribution of co-occurring pixel values (grayscale values, or colors) at a given offset"	</li>	
+	<li>		is a marix that is defined overany imagery to be the distribution of co-occurring pixel values (grayscale values, or colors) at a given offset	</li>	
 	<li>		computes how often pairs of pixels with a specific value and offset occur in the image	</li>	
+	<li>Best practices suggest that you should compute GLCM for multiple distances D and angles (theta)</li>
 	<li> See: Haralick et al. 1973</li>
 </ul>
 </section>
@@ -92,12 +98,12 @@
 <h2 class="r-fit-text">	<a href= "https://www.l3harrisgeospatial.com/docs/backgroundtexturemetrics.html">Numeric Features of GLCM</a></h2><br>			
 <ul>	
 	<li>		Computed from the cooccurrence matrix that can be used to represent the texture more compactly.	</li>	
-	<li>		"Maximum Probability - largest entry in the matrix, and corresponds to the strongest response"	</li>	
+	<li>		Maximum Probability - largest entry in the matrix, and corresponds to the strongest response	</li>	
 	<li>		Contrast - measures the local variations in the gray-level co-occurrence matrix	</li>	
 	<li>		Correlation - measures the joint probability occurrence of the specified pixel pairs	</li>	
 	<li>		Energy (Second Moment) - provides the sum of squared elements	</li>	
 	<li>		Homogeneity - measures the closeness of the distribution of elements	</li>	
-	<li>		"Entropy - measure of image information content, which is interpreted as the average uncertainty of information source"	</li>	</ul>
+	<li>		Entropy - measure of image information content, which is interpreted as the average uncertainty of information source</li>	</ul>
 </section>					
 					
 <section>					
@@ -115,22 +121,60 @@
 	<h2 class="r-fit-text">	Fractals	</h2><br>
 	<img src = "../imgs/Wiki_df_figure.png" height="25%" width="25%">
 </section>
+
+<section>
+	<h2 class="r-fit-text">	Gabor Filters</h2><br>
+	<ul>
+		<li>is inspired by a multi-channel filtering theory for processing visual information in the human visual system</li>
+		<li>a linear filter used for texture analysis, which essentially means that it analyzes whether there is any specific frequency content in the image in specific directions in a localized region around the point or region of analysis</li>
+		<li>When a Gabor filter is applied to an image, it gives the highest response at edges and at points where texture changes.</li>
+		<li><a href="https://medium.com/@anuj_shah/through-the-eyes-of-gabor-filter-17d1fdb3ac97">Define</a>: orientation (theta), spatial frequency (lambda) and aspect ratio (gamma)</li>
+	</ul>
+</section>
+
+<section>
+	<h2 class="r-fit-text">	Gabor Filters</h2><br>
+			<img src = "../imgs/GaborSegmentationExample.JPG">
+</section>
 								
 <section>					
-<h2 class="r-fit-text">	Haralick Texture	</h2><br>			
-		<p>	"The Haralick texture features are functions of the normalized GLCM, where different aspects of the gray level distribution in the ROI are represented."	</p>	
+<h2 class="r-fit-text">	Haralick Texture in Orfeo Toolbox	</h2><br>			
+		<p>The Haralick texture features are functions of the normalized GLCM, where different aspects of the gray level distribution in the ROI are represented.	</p>	
 </section>					
 					
 <section>					
-<h2 class="r-fit-text">	Parameters	</h2><br>			
+<h2 class="r-fit-text">OTB Haralick	Parameters	</h2><br>			
 <ul>		<li>	X Radius - window radius in x direction	</li>	
 		<li>	Y Radius - window radius in y direction	</li>	
 		<li>	X Offset - x of D vector	</li>	
 		<li>	Y Offset - y of D vector	</li>	
 		<li>	Image Min/Max - minimum and maximum intensity values	</li>	
-		<li>	Histogram - number of bins	</li>	</ul>
+		<li>	Histogram - number of bins	</li>
+		<LI>	Output is a multiband raster whose indiviual bands each correspond to one metric.</LI>	</ul>
+
 </section>					
 					
+<section>
+	<h2 class="r-fit-text">	OTB Harlick Metrics	</h2><br>	
+	<table>
+		<tbody>
+		<tr>
+		<td>Simple</td>
+		<td>Advanced</td>
+		<td>Higher</td>
+		</tr>
+		<tr>
+		<td>Energy (texture uniformity) <br />Entropy (measure of randomness of intensity image) <br />Correlation (how correlated a pixel is to its neighborhood) <br />Inverse Difference Moment (measures the texture homogeneity) <br />Inertia (intensity contrast between a pixel and its neighborhood) <br />Cluster Shade <br />Cluster Prominence <br />Haralick Correlation</td>
+
+		<td>Mean <br />Variance (measures the texture heterogeneity)<br /> Dissimilarity <br />Sum Average <br />Sum Variance <br />Sum Entropy <br />Difference of Entropies<br /> Difference of Variances<br /> Information Correlation 1<br /> Information Correlation 2</td>
+
+		<td>Short Run Emphasis (measures the texture sharpness) <br />Long Run Emphasis (measures the texture roughness)<br /> Grey-Level Nonuniformity <br />Run Length Nonuniformity <br />Run Percentage (measures the texture sharpness homogeneity) <br />Low Grey-Level Run Emphasis <br />High Grey-Level Run Emphasis <br />Short Run Low Grey-Level Emphasis <br />Short Run High Grey-Level Emphasis <br />Long Run Low Grey-Level Emphasis <br />Long Run High Grey-Level Emphasis</td>
+		</tr>
+		</tbody>
+		</table>
+
+</section>
+
 <section>					
 <h2 class="r-fit-text">	Example from OTB Haralick</h2><br>				
 <ul>					

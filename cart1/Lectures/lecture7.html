@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Thasadith&display=swap" rel="stylesheet">
+		<title>GEO 326 Lecture 7</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=yes">
+
+		<link rel="stylesheet" href="../../dist/reveal.css">
+		<link rel="stylesheet" href="../../dist/theme/white.css" id="theme">
+		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+	</head>
+	<body>
+
+	<div class="reveal">
+		<div class="slides" style="height: 75%;">
+            <section data-background-color="white"><h1>Scale</h1>
+            </section>
+    
+            <section>
+                <h2 class="r-fit-text">Scale</h2>
+                <p>ratio of a distance on the map to the corresponding distance on the ground</p>
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Scale</h2>
+                <p><img src="../mapsImgs/scale_example.jpg"></p>
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Absolute vs. Relative</h2>
+                <ul>
+                    <li>Absolute scale is measurable (map scale)</li>
+                    <li>Relative scale is intangible construction (large scale event)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Representative Fraction</h2>
+                    <p>A representative fraction relates map distance to ground distance. It is represented typically as a ratio (1:1000)</p>
+                    <img src="../mapsImgs/RepresentativeFraction.png">
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Why is scale important?</h2>
+                <p><ul>
+                    <li>Phenomenon Measurement</li>
+                    <li>Map Generalization</li>   
+                    <li>Map Reading</li>                 
+                </ul>
+                </p>
+            </section>
+
+            <section>
+            <section>
+                <h2 class="r-fit-text">Scale encompasses a number of things</h2>
+                <ul>
+                    <li>Scale of the phenomena</li>
+                    <li>Scale of its detection through observation</li>
+                    <li>Scale at which a pattern is statistically analyzed and communicated</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Measurement</h2>
+                <p>Some processes/phenomena only exist at certain scales.</p>
+                <p>any inferences about scale-dependency in a system are constrained by the extent and grain of investigation</p>
+                </p>
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Modifiable Areal Unit Problem (MAUP)</h2>
+                <p> MAUP is caused both by changing the size of aggregation units and by changing their boundaries.</p>
+                <p> You should consider the impact of your generalization choices.</p>
+                <img src = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Maup_rate_numbers.png">
+            </section>
+
+            </section>  
+
+            <section>
+                <h2 class="r-fit-text">Generalization</h2>
+            <p>control of the amount of detailed information portrayed in a map</p>
+            </section>
+
+        <section> 
+            <section>
+            <h2 class="r-fit-text">Cartographic Generalization</h2>
+            <p>generalization to prepare objects for symbolization</p>
+            </section>
+
+
+            <section>
+                <h2 class="r-fit-text"><a href="https://www.axismaps.com/guide/scale-and-generalization">Generalization Operators</a></h2>
+                <ul><li>Simplification</li>
+                <li>Aggregation</li>
+                <li>Smoothing</li>
+                <li>Selection/Elimination</li>
+                <li>Typification</li>
+                <li>Displacement</li>
+                <li>Exaggeration</li>
+                <li>Collapse</li>
+                <li>Merge</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Simplification</h2>
+                <p>removal of vertices from a feature</p>
+                <img src="../mapsImgs/simplification.jpg">
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Aggregation</h2>
+                <p>transforming a group of points into an area</p>
+                <p>Amalgamation is this process for areas to a larger area</p>
+                <img src="../mapsImgs/aggregationAmalgamation.jpg">
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Smoothing</h2>
+                <p>reduction of sharp angles (often through increasing number of vertices)</p>
+                <img src="../mapsImgs/smoothing.jpg">
+            </section>
+            <section>
+                <h2 class="r-fit-text">Selection/Elimmination</h2>
+                <p>choosing which objects to include or exclude from a map</p>
+                <img src="../mapsImgs/elimination.jpg">
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Typification</h2>
+                <p>set of similar features is replaced with a smaller set of those features</p>
+                <img src="../mapsImgs/typification.jpg">
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Displacement</h2>
+                <p>move an object away from another one to improve seperability</p>
+                <img src="../mapsImgs/displacement.jpg">
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Exaggeration</h2>
+                <p>overemphasis on a features representation</p>
+                <img src="../mapsImgs/exaggeration.jpg">
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Collapse</h2>
+                <p>Reduce a higher dimension feature to a point</p>
+                <img src="../mapsImgs/collapse.jpg">
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Merge</h2>
+                <p>group a collection of line features and reduce their complexity</p>
+                <img src="../mapsImgs/merge.jpg">
+            </section>
+            </section>
+
+            <section>
+                <h2 class="r-fit-text">Some examples</h2>
+                <p>
+                <a href ="https://www.google.com/maps">General Web Maps</a><br>
+                <a href="https://apps.nationalmap.gov/viewer/">The National Map</a><br>
+                <a href="http://www.personal.psu.edu/cab38/ScaleMaster/">Brewer's ScaleMaster</a>
+                </p>
+            </section>
+
+	<script src="../../dist/reveal.js"></script>
+    <script>
+     Reveal.initialize({
+    width: "100%",
+    height: "100%",
+    margin: 0,
+    minScale: 1,
+    maxScale: 1
+});
+</script>
+
+</body>
+
+</html>

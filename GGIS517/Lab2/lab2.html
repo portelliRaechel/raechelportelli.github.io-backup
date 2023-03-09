@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>GeoJSON tutorial - Leaflet</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+<div id='map'></div>
+
+<script type="text/javascript" src="illinois-education.js"></script>
+
+<script>
+	const map = L.map('map').setView([40.1020, -88.2272], 6);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+//function formats the shape color based on the attribute d's value
+function getColor(d) {
+    return d > 1 ? '#800026' :
+           d > 2  ? '#BD0026' :
+           d > 3  ? '#E31A1C' :
+           d > 4  ? '#FC4E2A' :
+           d > 5   ? '#FD8D3C' :
+           d > 6   ? '#FEB24C' :
+           d > 7   ? '#FED976' :
+                      '#FFEDA0';
+}
+
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.EdNorm), //color by EdNorm attribute from your file
+        weight: 2, //line weight
+        opacity: 1, //line opacity
+        color: 'white', //line color
+        fillOpacity: 0.7 //shape file
+    };
+}
+
+L.geoJson(bach, {style: style}).addTo(map);
+
+
+</script>
+
+
+
+</body>
+</html>

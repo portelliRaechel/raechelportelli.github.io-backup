@@ -16,11 +16,20 @@
 			height: 100%;
 			margin: 0;
 		}
+
 		.leaflet-container {
-			height: 600px;
-			width: 900px;
+			height: 400px;
+			width: 600px;
 			max-width: 100%;
 			max-height: 100%;
+		}
+
+	</style>
+	<style>
+
+		#map { 
+			width: 800px; 
+			height: 500px; 
 		}
 
 		.info {
@@ -37,29 +46,50 @@
 			color: #777;
 		}
 
-.legend { text-align: left; line-height: 18px; color: #555; } 
+		.legend { 
+			text-align: left; line-height: 18px; color: #555; } 
 
-.legend in { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+		.legend i { 
+			width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
 
-	</style>
-
-	
+	</style>	
 </head>
+
+
 <body>
+	<div id='map'></div>
 
-<div id='map'></div>
+		<script type="text/javascript" src="illinois-education.js"></script>
 
-<script type="text/javascript" src="illinois-education.js"></script>
+		<script>
+			const map = L.map('map').setView([40.1020, -88.2272], 6.5);
 
-<script>
-	const map = L.map('map').setView([40.1020, -88.2272], 6.5);
+			const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					maxZoom: 19,
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			}).addTo(map);
 
-	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 19,
-		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map);
+// HOVER INFORMATION 
+// control that shows state info on hover
+			const info = L.control();
 
-//function formats the shape color based on the attribute EdNorm value using Natural Breaks
+			info.onAdd = function (map) {
+				this._div = L.DomUtil.create('div', 'info');
+				this.update();
+				return this._div;
+			};
+
+			info.update = function (props) {
+				const contents = props ? `<b>${props.EdNorm}%</b><br>${props.CountyName}<br />${props.NAMELSAD}</sup>` : 'Hover over a census tract';
+				this._div.innerHTML = `<h4>Population with Bachelor's Degree</h4>${contents}`;
+			};
+
+			info.addTo(map);
+
+
+
+//Choropleth Color & Classification Setting
+
 function getColor(E) {
     return E > 35.19  ? '#BD0026' :
            E > 22.91 ? '#E31A1C' :
@@ -78,12 +108,51 @@ function style(feature) {
     };
 }
 
-L.geoJson(bach, {style: style}).addTo(map);
+//INTERACTION - Highlight
+
+function highlightFeature(e) {
+		const layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		layer.bringToFront();
+
+		info.update(layer.feature.properties);
+	}
+
+	const geojson = L.geoJson(bach, {
+		style,
+		onEachFeature
+	}).addTo(map);
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
 
 
+
+// LEGEND 
 
 //locates the legend in the bottom right of the map
-const legend = L.control({position: 'topright'});
+const legend = L.control({position: 'bottomright'});
 
 //adds the legend to the map in a <div> 
 	legend.onAdd = function (map) {
@@ -97,7 +166,7 @@ for (let i = 0; i < grades.length; i++) {
 	from = grades[i];
 	to = grades[i + 1];
 
-	labels.push(`<in style="background:${getColor(from + 1)}"></in> ${from}${to ? `&ndash;${to}` : '+'}`+'%');
+	labels.push(`<i style="background:${getColor(from + 1)}"></i> ${from}${to ? `&ndash;${to}` : '+'}`+'%');
 }
 
 div.innerHTML = labels.join('<br>');

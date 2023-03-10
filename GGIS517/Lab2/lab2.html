@@ -6,9 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>GeoJSON tutorial - Leaflet</title>
-	
-	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+	<title>Education Attainment Illinos</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
@@ -19,11 +17,24 @@
 			margin: 0;
 		}
 		.leaflet-container {
-			height: 400px;
-			width: 600px;
+			height: 600px;
+			width: 900px;
 			max-width: 100%;
 			max-height: 100%;
 		}
+
+		.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
 	</style>
 
 	
@@ -35,29 +46,26 @@
 <script type="text/javascript" src="illinois-education.js"></script>
 
 <script>
-	const map = L.map('map').setView([40.1020, -88.2272], 6);
+	const map = L.map('map').setView([40.1020, -88.2272], 6.5);
 
 	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
 
-//function formats the shape color based on the attribute d's value
-function getColor(d) {
-    return d > 1 ? '#800026' :
-           d > 2  ? '#BD0026' :
-           d > 3  ? '#E31A1C' :
-           d > 4  ? '#FC4E2A' :
-           d > 5   ? '#FD8D3C' :
-           d > 6   ? '#FEB24C' :
-           d > 7   ? '#FED976' :
+//function formats the shape color based on the attribute EdNorm value using Natural Breaks
+function getColor(E) {
+    return E > 35.19  ? '#BD0026' :
+           E > 22.91 ? '#E31A1C' :
+           E > 12.87  ? '#FC4E2A' :
+           E > 0  ? '#FD8D3C' :
                       '#FFEDA0';
 }
 
 function style(feature) {
     return {
         fillColor: getColor(feature.properties.EdNorm), //color by EdNorm attribute from your file
-        weight: 2, //line weight
+        weight: 0.5, //line weight
         opacity: 1, //line opacity
         color: 'white', //line color
         fillOpacity: 0.7 //shape file
@@ -65,6 +73,33 @@ function style(feature) {
 }
 
 L.geoJson(bach, {style: style}).addTo(map);
+
+
+
+//locates the legend in the bottom right of the map
+const legend = L.control({position: 'topright'});
+
+//adds the legend to the map in a <div> 
+	legend.onAdd = function (map) {
+
+const div = L.DomUtil.create('div', 'info legend');
+const grades = [0, 12.87, 22.91, 35.19];
+const labels = [];
+let from, to;
+
+for (let i = 0; i < grades.length; i++) {
+	from = grades[i];
+	to = grades[i + 1];
+
+	labels.push(`<i style="background:${getColor(from + 1)}"></i> ${from}${to ? `&ndash;${to}` : '+'}`+'%');
+}
+
+div.innerHTML = labels.join('<br>');
+return div;
+};
+
+legend.addTo(map);
+
 
 
 </script>

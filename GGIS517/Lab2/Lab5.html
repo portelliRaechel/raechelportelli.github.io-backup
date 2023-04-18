@@ -11,7 +11,7 @@
         
     
         //Load data 
-       d3.json("df.json", function(data) {
+        var dataset1 =  d3.json("df.json", function(data) {
             console.log(data);
         });
 
@@ -66,7 +66,7 @@
         // Step 7
         svg.append('g')
         .selectAll("dot")
-        .data(data)
+        .data(dataset1)
         .enter()
         .append("circle")
         .attr("cx", function (d) { return xScale(d[0]); } )

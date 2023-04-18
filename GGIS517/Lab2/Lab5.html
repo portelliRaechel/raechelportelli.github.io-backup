@@ -11,9 +11,9 @@
         
     
         //Load data 
-        var dataset1 =  d3.json("df.json", function(data) {
-            console.log(data);
-        });
+         var dataset1 =   d3.csv("/data.csv", function(data) {
+                console.log(data);
+            });
 
         // Step 3
         var svg = d3.select("svg"),

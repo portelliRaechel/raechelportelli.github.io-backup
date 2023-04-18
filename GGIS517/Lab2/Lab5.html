@@ -11,23 +11,14 @@
 </head>
 <body>
 <!--Step 2-->
- // <svg width="1000" height="800"></svg>
-    <div id="my_dataviz"></div>
-<script>
-        var svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
-    
-    
-        // Step 3
-        //var svg = d3.select("svg"),
-          //  margin = 200,
-            //width = svg.attr("width") - margin, //300
-            //height = svg.attr("height") - margin //200
+ <svg width="1000" height="800"></svg>
+
+<script> 
+         // Step 3
+        var svg = d3.select("svg"),
+           margin = 200,
+            width = svg.attr("width") - margin, //300
+            height = svg.attr("height") - margin //200
 
         // Step 4 
         var xScale = d3.scaleLinear().domain([0, 5]).range([0, width]),

@@ -2,19 +2,16 @@
 <html>
 <head>
     <!--Step 2-->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
 <!--Step 2-->
 <svg width="500" height="400"></svg>
 <script>
-        
-    
-        //Load data 
-         var dataset1 =   d3.csv("data.csv", function(data) {
-                console.log(data);
-            });
 
+    // Step 2
+    d3.csv("data.csv", function(data) {
+        
         // Step 3
         var svg = d3.select("svg"),
             margin = 200,
@@ -45,7 +42,7 @@
         .attr('text-anchor', 'middle')
         .style('font-family', 'Helvetica')
         .style('font-size', 12)
-        .text('Independant');
+        .text('Independent');
         
         // Y label
         svg.append('text')
@@ -53,7 +50,7 @@
         .attr('transform', 'translate(60,' + height + ')rotate(-90)')
         .style('font-family', 'Helvetica')
         .style('font-size', 12)
-        .text('Dependant');
+        .text('Dependent');
 
         // Step 6
         g.append("g")
@@ -66,15 +63,16 @@
         // Step 7
         svg.append('g')
         .selectAll("dot")
-        .data(dataset1)
+        .data(data)
         .enter()
         .append("circle")
-        .attr("cx", d=> x(d.Accidents))
-        .attr("cy", d=> y(d.Severity))
+        .attr("cx", d => xScale(d.Accidents))
+        .attr("cy", d => yScale(d.Severity))
         .attr("r", 2)
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
         .style("fill", "#CC0000");
-  
+    });
+
 </script>
 </body>
 </html>

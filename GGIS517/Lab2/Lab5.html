@@ -72,9 +72,11 @@
             .selectAll("dot")
             .data(data)
             .enter()
-            .append("point")
-            .attr("cx", d=> xScale(d.Severity))
-            .attr("cy", d=> yScale(d.Accidents))
+            .append("path") //changed from circle
+            .attr("d", d3.svg.symbol().type("triangle-up")) //triangle shape
+            .attr("transform", function(d) { return "translate(" + x(d.Severity) + "," + y(d.Accidents) + ")"; })
+            //.attr("cx", d=> xScale(d.Severity))
+            //.attr("cy", d=> yScale(d.Accidents))
             .attr("r", 2)
             .attr("transform", "translate(" + 100 + "," + 100 + ")")
             .style("fill", "#CC0000");

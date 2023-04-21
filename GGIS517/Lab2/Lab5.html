@@ -22,8 +22,8 @@
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         // Step 3: Parse the data
-       d3.csv("data.csv").then(function(data) {
-
+      
+      d3.csv("https://raw.githubusercontent.com/raechelportelli/raechelportelli.github.io/master/GGIS517/Lab2/data2.csv").then(function(data) {
 
         // Step 4: Set the ranges
         var x = d3.scaleLinear()
@@ -32,7 +32,7 @@
 
         var y = d3.scaleLinear()
                   .range([height, 0])
-                  .domain(d3.extent(data, function(d) { return d.Accidents; })).nice();
+                  .domain(d3.extent(data, function(d) { return d.PerCapitaAcc; })).nice();
 
         // Step 5: Add the x and y axes
         var xAxis = d3.axisBottom(x);
@@ -61,17 +61,19 @@
            .text("Accidents"); 
 
         // Step 7: Add the data points
-            svg.append('g')
+        svg.append('g')
             .selectAll("path")
             .data(data)
             .enter()
             .append("path")
             .attr("d", d3.symbol().type(d3.symbolTriangle))
             .attr("transform", function(d) {
-                return "translate(" + x(d.Severity) + "," + y(d.Accidents) + ")";
+                return "translate(" + x(d.Severity) + "," + y(d.PerCapitaAcc) + ")";
             })
+            //.attr("r", 2)
             .style("fill", "#CC0000");
-           
-           });
+        
+        });
     </script>
-    </body>
+  </body>
+</html>

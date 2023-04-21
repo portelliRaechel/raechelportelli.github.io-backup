@@ -22,7 +22,7 @@
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         // Step 3: Parse the data
-        var data = d3.csv("data.csv");
+        var data = d3.csv("/data.csv");
 
         // Step 4: Set the ranges
         var x = d3.scaleLinear()

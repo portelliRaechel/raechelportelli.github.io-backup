@@ -22,7 +22,8 @@
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         // Step 3: Parse the data
-        var data = d3.csv("/data.csv");
+       d3.csv("data.csv").then(function(data) {
+
 
         // Step 4: Set the ranges
         var x = d3.scaleLinear()
@@ -70,5 +71,7 @@
                 return "translate(" + x(d.Severity) + "," + y(d.Accidents) + ")";
             })
             .style("fill", "#CC0000");
+           
+           });
     </script>
     </body>

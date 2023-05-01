@@ -8,200 +8,30 @@
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 <!--Mapping Support Libraries-->
-
   <!-- D3 library -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
-
   <!-- MomentJS -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-
   <!-- Leaflet JavaScript code -->
   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
   crossorigin=""></script>
-
   <!-- polyfill.io is the library for using newer JavaScript features (such as Object.assign) in older browers. -->
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
-
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
   crossorigin=""/>
-
   <!-- Icons -->
-  <script src="leaflet.extra-markers.min.js"></script>
-  <link rel="stylesheet" href="ionicons.min.css">
-  <link rel="stylesheet" href="leaflet.extra-markers.min.css">
-  
-    <!-- Icons -->
   <script src="leaflet.extra-markers.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="leaflet.extra-markers.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="main.css">
 
-  <style rel="stylesheet" type="text/css">
-    /* CSS */
-.navigation {
-  height: 70px;
-  background: #fff;
-}
-
-.nav-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.brand {
-  position: absolute;
-  padding-left: 20px;
-  float: left;
-  line-height: 70px;
-  text-transform: uppercase;
-  font-size: 1.4em;
-}
-.brand a,
-.brand a:visited {
-  color: #0c0c0c;
-  text-decoration: none;
-}
-
-nav {
-  float: right;
-}
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-nav ul li {
-  float: left;
-  position: relative;
-}
-nav ul li a {
-  display: block;
-  padding: 10px 20px 0 20px;
-  line-height: 50px;
-  background: #fff;
-  color: #0c0c0c;
-  text-decoration: none;
-}
-nav ul li a::before {
-  transition: 300ms;
-  height: 5px;
-  content: "";
-  position: absolute;
-  background-color: #f8b500;
-  width: 0%;
-  bottom: 0px;
-}
-nav ul li a:hover::before {
-  width: 70%;
-}
-nav ul li a:not(:only-child):after {
-  padding-left: 4px;
-  content: " ▾";
-}
-nav ul li ul li {
-  min-width: 190px;
-}
-nav ul li ul li a {
-  padding: 15px;
-  line-height: 20px;
-}
-
-.nav-dropdown {
-  display: none;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
-
-.nav-mobile {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #fff;
-  height: 70px;
-  width: 70px;
-}
-
-@media only screen and (max-width: 799px) {
-  .nav-mobile {
-    display: block;
-  }
-  nav {
-    width: 100%;
-    padding: 70px 0 15px;
-  }
-  nav ul {
-    display: none;
-  }
-  nav ul li {
-    float: none;
-  }
-  nav ul li a {
-    padding: 15px;
-    line-height: 20px;
-  }
-  nav ul li a:hover::before {
-    width: 20%;
-  }
-  nav ul li ul li a {
-    padding-left: 30px;
-  }
-  .nav-dropdown {
-    position: relative;
-  }
-}
-#nav-toggle {
-  position: absolute;
-  left: 18px;
-  top: 22px;
-  cursor: pointer;
-  padding: 10px 35px 16px 0px;
-}
-#nav-toggle span,
-#nav-toggle span:before,
-#nav-toggle span:after {
-  cursor: pointer;
-  border-radius: 1px;
-  height: 5px;
-  width: 35px;
-  background: #f8b500;
-  position: absolute;
-  display: block;
-  content: "";
-  transition: all 300ms ease-in-out;
-}
-#nav-toggle span:before {
-  top: -10px;
-}
-#nav-toggle span:after {
-  bottom: -10px;
-}
-#nav-toggle.active span {
-  background-color: transparent;
-}
-#nav-toggle.active span:before, #nav-toggle.active span:after {
-  top: 0;
-}
-#nav-toggle.active span:before {
-  transform: rotate(45deg);
-}
-#nav-toggle.active span:after {
-  transform: rotate(-45deg);
-}
-
-@media screen and (min-width: 799px) {
-  .nav-list {
-    display: block !important;
-  }
-}
-/*End CSS */
-  </style>
 </head>
 <body>
   <div id="map-id"></div>

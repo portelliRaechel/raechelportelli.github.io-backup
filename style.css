@@ -1,0 +1,64 @@
+html,
+body,
+#map-id {
+  height: 95%;
+  padding: 10;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legend {
+  padding: 10px;
+  font-family: Sanchez, serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #555;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.legend .low {
+  color: #ec8a2e;
+}
+
+.legend .empty {
+  color: #a0353a;
+}
+
+.legend .coming-soon {
+  color: #f4ba48;
+}
+
+.legend .healthy {
+  color: #1b904f;
+}
+
+.legend .out-of-order {
+  color: #007dff;
+}
+
+body
+{
+  background: snow;
+}
+
+ /* Footer */
+ footer{
+  background-color: DarkGoldenRod; 
+  opacity: 0.5;
+  border-top-style: solid; 
+  border-top-width: 2px; 
+  border-top-color: #ffffff;
+  color: black; 
+  min-height: 40px; 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px; 
+  text-align: center; 
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 12px; 
+  }

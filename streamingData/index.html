@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+  <title>Streaming Data Map - Citibike example</title>
+
+<!--Non-leaflet Libraries-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+<!--Mapping Support Libraries-->
+
+  <!-- D3 library -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- MomentJS -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+  <!-- Leaflet JavaScript code -->
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+
+  <!-- polyfill.io is the library for using newer JavaScript features (such as Object.assign) in older browers. -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+
+  <!-- Icons -->
+  <script src="dist/js/leaflet.extra-markers.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="dist/css/leaflet.extra-markers.min.css">
+
+</head>
+<body>
+  <div id="map-id"></div>
+
+  <script>
+// Create a new Leaflet map centered on New York City.
+var map = L.map('map-id').setView([40.7128, -74.0060], 13);
+
+// Add a tile layer to the map (in this case, OpenStreetMap).
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+  maxZoom: 18,
+}).addTo(map);
+
+// Define an object to hold the icons for each station status.
+var icons = {
+  COMING_SOON: L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  }),
+  EMPTY: L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  }),
+  LOW: L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  }),
+  NORMAL: L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  }),
+  OUT_OF_ORDER: L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  })
+};
+
+// Define an object to hold the layers for each station status.
+var layers = {
+  COMING_SOON: new L.LayerGroup(),
+  EMPTY: new L.LayerGroup(),
+  LOW: new L.LayerGroup(),
+  NORMAL: new L.LayerGroup(),
+  OUT_OF_ORDER: new L.LayerGroup()
+};
+
+
+// Define the URLs for the Citi Bike station information and status endpoints.
+const infoURL = 'https://gbfs.citibikenyc.com/gbfs/en/station_information.json';
+const statusURL = 'https://gbfs.citibikenyc.com/gbfs/en/station_status.json';
+
+// Define a function to handle the JSON data for both endpoints.
+function handleData(data) {
+  // Extract the station information and status from the JSON data.
+  const stationInfo = data[0].data.stations;
+  const stationStatus = data[1].data.stations;
+
+  // Loop through the stations and do something with the data, for example adding markers to a Leaflet map.
+  for (let i = 0; i < stationInfo.length; i++) {
+    const station = Object.assign({}, stationInfo[i], stationStatus[i]);
+    console.log(station.name, station.num_bikes_available);
+  }
+}
+
+// Make a parallel request to both endpoints using Promise.all.
+Promise.all([fetch(infoURL).then(response => response.json()), fetch(statusURL).then(response => response.json())])
+  .then(data => handleData(data))
+  .catch(error => console.error(error));
+  </script>
+</body>
+</html>

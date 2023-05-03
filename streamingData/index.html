@@ -49,6 +49,28 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
   maxZoom: 18,
 }).addTo(map);
+    
+    // Define the URLs for the Citi Bike station information and status endpoints.
+const infoURL = 'https://gbfs.citibikenyc.com/gbfs/en/station_information.json';
+const statusURL = 'https://gbfs.citibikenyc.com/gbfs/en/station_status.json';
+
+// Define a function to handle the JSON data for both endpoints.
+function handleData(data) {
+  // Extract the station information and status from the JSON data.
+  const stationInfo = data[0].data.stations;
+  const stationStatus = data[1].data.stations;
+
+  // Loop through the stations and do something with the data, for example adding markers to a Leaflet map.
+  for (let i = 0; i < stationInfo.length; i++) {
+    const station = Object.assign({}, stationInfo[i], stationStatus[i]);
+    console.log(station.name, station.num_bikes_available);
+  }
+}
+
+// Make a parallel request to both endpoints using Promise.all.
+Promise.all([fetch(infoURL).then(response => response.json()), fetch(statusURL).then(response => response.json())])
+  .then(data => handleData(data))
+  .catch(error => console.error(error));
 
 // Define an object to hold the icons for each station status.
 var icons = {
@@ -104,27 +126,7 @@ var layers = {
 };
 
 
-// Define the URLs for the Citi Bike station information and status endpoints.
-const infoURL = 'https://gbfs.citibikenyc.com/gbfs/en/station_information.json';
-const statusURL = 'https://gbfs.citibikenyc.com/gbfs/en/station_status.json';
 
-// Define a function to handle the JSON data for both endpoints.
-function handleData(data) {
-  // Extract the station information and status from the JSON data.
-  const stationInfo = data[0].data.stations;
-  const stationStatus = data[1].data.stations;
-
-  // Loop through the stations and do something with the data, for example adding markers to a Leaflet map.
-  for (let i = 0; i < stationInfo.length; i++) {
-    const station = Object.assign({}, stationInfo[i], stationStatus[i]);
-    console.log(station.name, station.num_bikes_available);
-  }
-}
-
-// Make a parallel request to both endpoints using Promise.all.
-Promise.all([fetch(infoURL).then(response => response.json()), fetch(statusURL).then(response => response.json())])
-  .then(data => handleData(data))
-  .catch(error => console.error(error));
   </script>
 </body>
 </html>

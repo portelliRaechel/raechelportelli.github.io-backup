@@ -42,7 +42,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       })
       .then(function(data) {
         // create a Leaflet GeoJSON layer and add it to the map
-        var citiesLayer = L.geoJSON(data).addTo(myMap);
+        var citiesLayer = L.geoJSON(data).addTo(map);
       });
   
   

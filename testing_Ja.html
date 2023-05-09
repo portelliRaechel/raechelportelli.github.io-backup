@@ -111,7 +111,7 @@ info.update(layer.feature.properties);
 const city = L.geoJson(cities).addTo(map); 
     
 function highlightFeature(population) {
-		var layer = population.target;
+		var layer = cities.target;
 		layer.setStyle({
 			weight: 3,
 			color: '#00ffff',
@@ -125,7 +125,7 @@ function highlightFeature(population) {
 	}
 	
 	function resetHighlight(population) {
-		geojson.resetStyle(population.target);
+		cities.resetStyle(population.target);
 		app.info.update();
 	}
 	function zoomToFeature(population) {

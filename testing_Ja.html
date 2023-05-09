@@ -39,6 +39,39 @@ width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
   <script>
   // initialize the map
    var map = L.map('map').setView([40, -89], 4); 
+	  
+	  // create a marker layer group
+const markers = L.layerGroup().addTo(map);
+
+// loop through the cities data and add a marker for each city
+cities.features.forEach(city => {
+  const marker = L.marker([city.geometry.coordinates[1], city.geometry.coordinates[0]]);
+  marker.on('mouseover', e => {
+    // highlight the marker when hovered over
+    e.target.setStyle({
+      weight: 5,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.7
+    });
+  });
+  marker.on('mouseout', e => {
+    // reset the marker style when mouseout
+    markers.resetStyle(e.target);
+  });
+  marker.addTo(markers);
+});
+In this updated code, we create a markers layer group and add it to the map. Then we loop through the cities data and add a marker for each city. We add a mouseover event listener to each marker that sets the marker's style to be highlighted. We also add a mouseout event listener to each marker that resets the marker's style to the default. Finally, we add each marker to the markers layer group.
+
+
+
+
+
+
+
+	  
+	  
+	  
   // load a tile layer
 L.esri.basemapLayer('Streets').addTo(map);
 var popup = L.popup();

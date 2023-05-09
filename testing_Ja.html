@@ -32,36 +32,32 @@ width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
   <div id="map"></div>
       <script type="text/javascript" src="city.js"></script>
 <script>
-  // initialize the map
-  var map = L.map('map').setView([40, -89], 4);
+  var map = L.map('map').setView([40, -95], 4);
 
-// add the GeoJSON layer for cities
-var citiesLayer = L.geoJSON(cities, {
-  // style function to set marker style
-  style: function(feature) {
-    return {
-      color: '#000000',
-      fillColor: '#ff0000',
-      fillOpacity: 0.5
-    };
-  },
-  // function to bind popup and mouseover events to markers
-  onEachFeature: function(feature, layer) {
-    layer.bindPopup(feature.properties.name + '<br>Population: ' + feature.properties.population);
-    layer.on({
-      mouseover: function(e) {
-        this.setStyle({
-          color: '#0000ff',
-          fillColor: '#0000ff',
-          fillOpacity: 0.5
-        });
-      },
-      mouseout: function(e) {
-        citiesLayer.resetStyle(e.target);
-      }
-    });
-  }
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+    maxZoom: 18
 }).addTo(map);
+
+L.geoJSON(cities, {
+    onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function() {
+            this.setStyle({
+                weight: 2,
+                color: 'red'
+            });
+            layer.bindPopup("Population: " + feature.properties.population);
+        });
+        layer.on('mouseout', function() {
+            this.setStyle({
+                weight: 1,
+                color: 'black'
+            });
+            layer.unbindPopup();
+        });
+    }
+}).addTo(map);
+
   
 </script>
 </body>

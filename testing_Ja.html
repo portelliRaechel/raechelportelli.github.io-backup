@@ -1,13 +1,9 @@
 <html>
 <head>
   <title>final</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-     crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
-<script src="//cdn.jsdelivr.net/leaflet.esri/1.0.3/esri-leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="//cdn.jsdelivr.net/leaflet.esri/1.0.3/esri-leaflet.js"></script>
     <style>
 .info {
     padding: 6px 8px;
@@ -31,112 +27,42 @@ width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
   <style>
     #map{ width: 800px; height: 600px; }
   </style>
- 
 </head>
 <body>
   <div id="map"></div>
-<script type="text/javascript" src="city.js"></script>
+      <script type="text/javascript" src="city.js"></script>
 <script>
   // initialize the map
   var map = L.map('map').setView([40, -89], 4);
+
+// add the GeoJSON layer for cities
+var citiesLayer = L.geoJSON(cities, {
+  // style function to set marker style
+  style: function(feature) {
+    return {
+      color: '#000000',
+      fillColor: '#ff0000',
+      fillOpacity: 0.5
+    };
+  },
+  // function to bind popup and mouseover events to markers
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(feature.properties.name + '<br>Population: ' + feature.properties.population);
+    layer.on({
+      mouseover: function(e) {
+        this.setStyle({
+          color: '#0000ff',
+          fillColor: '#0000ff',
+          fillOpacity: 0.5
+        });
+      },
+      mouseout: function(e) {
+        citiesLayer.resetStyle(e.target);
+      }
+    });
+  }
+}).addTo(mymap);
   
-  // create a markers layer group
-  var markers = L.layerGroup().addTo(map);
-  var markerArray = [];
-
-  // loop through the cities data and add a marker for each city
-  cities.features.forEach(city => {
-    const marker = L.marker([city.geometry.coordinates[1], city.geometry.coordinates[0]]);
-    marker.on('mouseover', e => {
-      // highlight the marker when hovered over
-      e.target.setStyle({
-        weight: 5,
-        color: '#666',
-        dashArray: '',
-        fillOpacity: 0.7
-      });
-    });
-    marker.on('mouseout', e => {
-      // reset the marker style when mouseout
-      e.target.setStyle({
-        weight: 2,
-        color: 'black',
-        dashArray: '3',
-        fillOpacity: 0.5
-      });
-    });
-    marker.addTo(markers);
-    markerArray.push(marker);
-  });
-
-  // load a tile layer
-  L.esri.basemapLayer('Streets').addTo(map);
-
-  // create a popup for the map click event
-  var popup = L.popup
-
-  // create a popup for the map click event
-  var popup = L.popup();
-  function onMapClick(e) {
-      popup
-          .setLatLng(e.latlng)
-          .setContent("You clicked the map at " + e.latlng.toString())
-          .openOn(map);
-  }
-  map.on('click', onMapClick);
-
-  // create an info control for the map
-  var info = L.control();
-  info.onAdd = function (map) {
-      this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-      this.update();
-      return this._div;
-  };
-
-  // update the info control when a city marker is hovered over
-  info.update = function (props) {
-      this._div.innerHTML = '<h4>Population around park</h4>' +  (props ?
-          '<b>' + props.population + '%</b><br />' + props.name
-          : 'Hover over a city');
-  };
-  info.addTo(map);
-
-  // define the highlightFeature function for the city markers
-  function highlightFeature(e) {
-    var layer = e.target;
-    layer.setStyle({
-        weight: 3,
-        color: '#00ffff',
-        dashArray: '',
-        fillOpacity: 0.9
-    });
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-      layer.bringToFront();
-    }
-    info.update(layer.feature.properties);
-  }
-
-  // define the resetHighlight function for the city markers
-  function resetHighlight(e) {
-    markers.resetStyle(e.target);
-    info.update();
-  }
-
-  // define the zoomToFeature function for the city markers
-  function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-  }
-
-  // add the city markers to the map and define their interaction functions
-  L.geoJSON(cities, {
-    onEachFeature: function(feature, layer) {
-      layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-      });
-    }
-  }).addTo(map);
 </script>
 </body>
 </html>

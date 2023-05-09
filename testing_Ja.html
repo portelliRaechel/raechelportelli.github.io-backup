@@ -3,6 +3,49 @@
   var map = L.map('map').setView([40, -89], 4);
   
   // create a markers layer group
+  var markers = L.layerGroup().addTo(map);<html>
+<head>
+  <title>final</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+<script src="//cdn.jsdelivr.net/leaflet.esri/1.0.3/esri-leaflet.js"></script>
+    <style>
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.legend {
+text-align: left; line-height: 18px; color: #555; }
+.legend i {
+width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }	  
+
+</style>
+  <style>
+    #map{ width: 800px; height: 600px; }
+  </style>
+ 
+</head>
+<body>
+  <div id="map"></div>
+<script type="text/javascript" src="city.js"></script>
+<script>
+  // initialize the map
+  var map = L.map('map').setView([40, -89], 4);
+  
+  // create a markers layer group
   var markers = L.layerGroup().addTo(map);
 
   // loop through the cities data and add a marker for each city
@@ -90,3 +133,5 @@
     }
   }).addTo(map);
 </script>
+</body>
+</html>

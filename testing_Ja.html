@@ -86,24 +86,24 @@ width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
   // create a markers layer group
   var markers = L.layerGroup().addTo(map);
 
-  // loop through the cities data and add a marker for each city
-  cities.features.forEach(city => {
-    const marker = L.marker([city.geometry.coordinates[1], city.geometry.coordinates[0]]);
-    marker.on('mouseover', e => {
-      // highlight the marker when hovered over
-      e.target.setStyle({
-        weight: 5,
-        color: '#666',
-        dashArray: '',
-        fillOpacity: 0.7
-      });
+// loop through the cities data and add a marker for each city
+cities.features.forEach(city => {
+  const marker = L.marker([city.geometry.coordinates[1], city.geometry.coordinates[0]]);
+  marker.on('mouseover', e => {
+    // highlight the marker when hovered over
+    e.target.setStyle({
+      weight: 5,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.7
     });
-    marker.on('mouseout', e => {
-      // reset the marker style when mouseout
-      markers.resetStyle(e.target);
-    });
-    marker.addTo(markers);
   });
+  marker.on('mouseout', e => {
+    // reset the marker style when mouseout
+    markers.resetStyle(e.target);
+  });
+  marker.addTo(markers);
+});
 
   // load a tile layer
   L.esri.basemapLayer('Streets').addTo(map);

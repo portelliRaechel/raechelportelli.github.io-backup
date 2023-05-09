@@ -25,13 +25,27 @@
   <div id="map"></div>
       <script type="text/javascript" src="city.js"></script>
 <script>
+  
+  //load map
   var map = L.map('map').setView([40, -95], 4);
 
+ //load base layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
     maxZoom: 18
 }).addTo(map);
 
+// load the cities GeoJSON file
+    fetch('cities.geojson')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        // create a Leaflet GeoJSON layer and add it to the map
+        var citiesLayer = L.geoJSON(data).addTo(myMap);
+      });
+  
+  
 </script>
 </body>
 </html>

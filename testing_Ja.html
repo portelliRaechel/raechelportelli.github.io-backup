@@ -54,21 +54,25 @@
       })
       .then(function(data) {
         // create a Leaflet GeoJSON layer and add it to the map
-        var citiesLayer = L.geoJSON(data, {
-          onEachFeature: function(feature, layer) {
-            if (layer instanceof L.Marker) {
-              layer.on('mouseover', function() {
-                this.setStyle({ fillColor: 'red' });
+      var citiesLayer = L.geoJSON(data, {
+        onEachFeature: function(feature, layer) {
+          layer.on({
+            mouseover: function(e) {
+              var layer = e.target;
+              layer.setStyle({
+                weight: 3,
+                color: 'red',
+                dashArray: '',
+                fillOpacity: 0.7
               });
-              layer.on('mouseout', function() {
-                this.setStyle(markerStyle);
-              });
+            },
+            mouseout: function(e) {
+              citiesLayer.resetStyle(e.target);
             }
-          },
-          pointToLayer: function(feature, latlng) {
-            return L.circleMarker(latlng, markerStyle);
-          }
-        }).addTo(map);
+          });
+        }
+      }).addTo(map);
+
       });
   </script>
 </body>

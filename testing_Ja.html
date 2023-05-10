@@ -58,7 +58,7 @@
           onEachFeature: function(feature, layer) {
             if (layer instanceof L.Marker) {
               layer.on('mouseover', function() {
-                this.setStyle({ fillColor: 'red' });
+                this.setStyle({ fillColor: 'blue' });
               });
               layer.on('mouseout', function() {
                 this.setStyle(markerStyle);

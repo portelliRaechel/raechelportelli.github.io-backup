@@ -47,14 +47,17 @@
       fillOpacity: 0.8
     };
 
-    // load the cities GeoJSON file
+     // load the cities GeoJSON file
     fetch('cities.geojson')
       .then(function(response) {
         return response.json();
       })
       .then(function(data) {
         // create a Leaflet GeoJSON layer and add it to the map
-        var citiesLayer = L.geoJSON(data, {
+        var citiesLayer = L.geoJSON(data).addTo(map);
+        
+        // create a marker layer and add it to the map
+        var markerLayer = L.geoJSON(data, {
           onEachFeature: function(feature, layer) {
             if (layer instanceof L.Marker) {
               layer.on('mouseover', function() {
@@ -70,6 +73,15 @@
           }
         }).addTo(map);
       });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
   </script>
 </body>
 </html>

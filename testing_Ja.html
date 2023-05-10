@@ -40,8 +40,9 @@
       // Create a new GeoJSON layer with circle markers
       var geojsonLayer = L.geoJSON(data, {
         pointToLayer: function (feature, latlng) {
-          marker.bindPopup(feature.properties.feature_code);
-          return L.circleMarker(latlng, circleMarkerOptions);
+          var marker = L.circleMarker(latlng, circleMarkerOptions);
+          marker.bindPopup(feature.properties.name); // Add popup that displays the "name" property
+          return marker;
         }
       });
 

@@ -43,7 +43,17 @@
       })
       .then(function(data) {
         // create a Leaflet GeoJSON layer and add it to the map
-        var citiesLayer = L.geoJSON(data).addTo(map);
+        var citiesLayer = L.geoJSON(data, {
+          // add event listeners to highlight points on mouseover and revert on mouseout
+          onEachFeature: function(feature, layer) {
+            layer.on('mouseover', function(e) {
+              layer.setStyle({ color: 'red' });
+            });
+            layer.on('mouseout', function(e) {
+              layer.setStyle({ color: 'blue' });
+            });
+          }
+        }).addTo(map);
       });
   </script>
 </body>

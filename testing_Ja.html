@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>final</title>
@@ -36,6 +37,16 @@
       maxZoom: 18
     }).addTo(map);
 
+    // define marker style
+    var markerStyle = {
+      radius: 5,
+      fillColor: "#ff7800",
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8
+    };
+
     // load the cities GeoJSON file
     fetch('cities.geojson')
       .then(function(response) {
@@ -44,14 +55,18 @@
       .then(function(data) {
         // create a Leaflet GeoJSON layer and add it to the map
         var citiesLayer = L.geoJSON(data, {
-          // add event listeners to highlight points on mouseover and revert on mouseout
           onEachFeature: function(feature, layer) {
-            layer.on('mouseover', function(e) {
-              layer.setStyle({ color: 'red' });
-            });
-            layer.on('mouseout', function(e) {
-              layer.setStyle({ color: 'blue' });
-            });
+            if (layer instanceof L.Marker) {
+              layer.on('mouseover', function() {
+                this.setStyle({ fillColor: 'red' });
+              });
+              layer.on('mouseout', function() {
+                this.setStyle(markerStyle);
+              });
+            }
+          },
+          pointToLayer: function(feature, latlng) {
+            return L.circleMarker(latlng, markerStyle);
           }
         }).addTo(map);
       });

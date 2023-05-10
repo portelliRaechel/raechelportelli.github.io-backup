@@ -34,15 +34,34 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18
 }).addTo(map);
 
-// load the cities GeoJSON file
-    fetch('cities.geojson')
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        // create a Leaflet GeoJSON layer and add it to the map
-        var citiesLayer = L.geoJSON(data).addTo(map);
-      });
+  
+const bicycleRentalLayer = L.geoJSON([cities], {
+style(feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature,
+
+		pointToLayer(feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 8,
+				fillColor: '#ff7800',
+				color: '#000',
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+		}
+	}).addTo(map);
+
+const coorsLayer = L.geoJSON(cities, {
+
+		pointToLayer(feature, latlng) {
+			return L.marker(latlng, {icon: baseballIcon});
+		},
+
+		onEachFeature
+	}).addTo(map);
   
   
 </script>

@@ -2,68 +2,50 @@
 <head>
   <title>final</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-    <style>
-.info {
-    padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
-    background: white;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-}
-.info h4 {
-    margin: 0 0 5px;
-    color: #777;
-}
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/leaflet.esri/1.0.3/esri-leaflet.js"></script>
+  <style>
+    .info {
+      padding: 6px 8px;
+      font: 14px/16px Arial, Helvetica, sans-serif;
+      background: white;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+    .info h4 {
+      margin: 0 0 5px;
+      color: #777;
+    }
 
- #map{ width: 800px; height: 600px; }
-</style>
+    #map { 
+      width: 800px; 
+      height: 600px; 
+    }
+  </style>
 </head>
 <body>
   <div id="map"></div>
-      <script type="text/javascript" src="city.js"></script>
-<script>
-  
-  //load map
-  var map = L.map('map').setView([40, -95], 4);
+  <script type="text/javascript" src="city.js"></script>
+  <script>
+    // load map
+    var map = L.map('map').setView([40, -95], 4);
 
- //load base layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-    maxZoom: 18
-}).addTo(map);
+    // load base layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
 
-  
-const bicycleRentalLayer = L.geoJSON([cities], {
-style(feature) {
-			return feature.properties && feature.properties.style;
-		},
-
-		onEachFeature,
-
-		pointToLayer(feature, latlng) {
-			return L.circleMarker(latlng, {
-				radius: 8,
-				fillColor: '#ff7800',
-				color: '#000',
-				weight: 1,
-				opacity: 1,
-				fillOpacity: 0.8
-			});
-		}
-	}).addTo(map);
-
-const coorsLayer = L.geoJSON(cities, {
-
-		pointToLayer(feature, latlng) {
-			return L.marker(latlng, {icon: baseballIcon});
-		},
-
-		onEachFeature
-	}).addTo(map);
-  
-  
-</script>
+    // load the cities GeoJSON file
+    fetch('cities.geojson')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        // create a Leaflet GeoJSON layer and add it to the map
+        var citiesLayer = L.geoJSON(data).addTo(map);
+      });
+  </script>
 </body>
 </html>

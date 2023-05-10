@@ -1,87 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>final</title>
+  <title>Leaflet GeoJSON Example</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Load Leaflet from CDN -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-  <style>
-    .info {
-      padding: 6px 8px;
-      font: 14px/16px Arial, Helvetica, sans-serif;
-      background: white;
-      background: rgba(255,255,255,0.8);
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      border-radius: 5px;
-    }
-    .info h4 {
-      margin: 0 0 5px;
-      color: #777;
-    }
 
-    #map { 
-      width: 800px; 
-      height: 600px; 
+  <style>
+    #map {
+      height: 500px;
     }
   </style>
 </head>
 <body>
-  <div id="map"></div>
-  <script type="text/javascript" src="city.js"></script>
-  <script>
-    // load map
-    var map = L.map('map').setView([40, -95], 4);
 
-    // load base layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-      maxZoom: 18
-    }).addTo(map);
+<div id="map"></div>
 
-    // define marker style
-    var markerStyle = {
-      radius: 5,
-      fillColor: "#ff7800",
-      color: "#000",
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.8
-    };
+<script>
+  // Initialize the map
+  var map = L.map('map').setView([37.8, -96], 4);
 
-     // load the cities GeoJSON file
-    fetch('cities.geojson')
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        // create a Leaflet GeoJSON layer and add it to the map
-        var citiesLayer = L.geoJSON(data).addTo(map);
-        
-        // create a marker layer and add it to the map
-        var markerLayer = L.geoJSON(data, {
-          onEachFeature: function(feature, layer) {
-            if (layer instanceof L.Marker) {
-              layer.on('mouseover', function() {
-                this.setStyle({ fillColor: 'blue' });
-              });
-              layer.on('mouseout', function() {
-                this.setStyle(markerStyle);
-              });
-            }
-          },
-          pointToLayer: function(feature, latlng) {
-            return L.circleMarker(latlng, markerStyle);
-          }
-        }).addTo(map);
+  // Load the GeoJSON data
+  fetch("https://leafletjs.com/examples/choropleth/us-states.geojson")
+    .then(response => response.json())
+    .then(data => {
+      // Define the circle marker style
+      var circleMarkerOptions = {
+        radius: 6,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+      };
+
+      // Create a new GeoJSON layer with circle markers
+      var geojsonLayer = L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng, circleMarkerOptions);
+        }
       });
-  </script>
-</body>
-</html>
 
+      // Add the layer to the map
+      geojsonLayer.addTo(map);
 
+      // Set up event listeners to change the circle marker color on mouseover/mouseout
+      geojsonLayer.eachLayer(function(layer) {
+        layer.on('mouseover', function () {
+          this.setStyle({fillColor: 'blue'});
+        });
+        layer.on('mouseout', function () {
+          this.setStyle({fillColor: '#ff7800'});
+        });
+      });
+    });
 
+  // Add a tile layer to the map
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+  }).addTo(map);
+</script>
 
-
-
-  </script>
 </body>
 </html>
